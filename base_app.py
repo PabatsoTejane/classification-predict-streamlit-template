@@ -50,11 +50,19 @@ def main():
 
 	if selection == "Summary":
 		st.info("Team and Project Summary")
-		st.markdown("Team Members")
+		st.subheader("Team Members")
+		st.text("Pabatso Tejane")
+		st.text("Olefile Ramoitheki")
+		st.text("Euphrasia Mampuru")
+		st.text("Nqobile Ncube")
+		st.text("Collen Bothma")
 
 		st.subheader("Project Problem Statement")
 		st.info("Creating a twitter classifier")
 
+	if selection == "EDA":
+		st.info("Exploratoty Data Analysis")
+	
 	# Building out the "Information" page
 	if selection == "Information":
 		st.info("General Information")
