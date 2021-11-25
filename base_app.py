@@ -51,11 +51,11 @@ def main():
 	if selection == "Summary":
 		st.info("Team and Project Summary")
 		st.subheader("Team Members")
-		st.markdown("Pabatso Tejane")
-		st.markdown("Olefile Ramoitheki")
-		st.markdown("Euphrasia Mampuru")
-		st.markdown("Nqobile Ncube")
-		st.markdown("Collen Bothma")
+		st.markdown(" * **Pabatso Tejane** ")
+		st.markdown(" * **Olefile Ramoitheki** ")
+		st.markdown(" * **Euphrasia Mampuru** ")
+		st.markdown(" * **Nqobile Ncube** ")
+		st.markdown(" * **Collen Bothma** ")
 
 		st.subheader("Project Problem Statement")
 		st.info("Creating a twitter classifier")
