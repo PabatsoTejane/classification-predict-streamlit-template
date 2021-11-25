@@ -49,6 +49,14 @@ def main():
 	options = ["Summary", "EDA", "Prediction", "Information"]
 	selection = st.sidebar.selectbox("Choose Option", options)
 
+	if selection == "Summary":
+		st.info("Team and Project Summary")
+		st.markdown("Team Members")
+
+		st.subheader("Project Problem Statement")
+		if st.checkbox('Show raw data'): 
+			st.info("Creating a twitter classifier")
+
 	# Building out the "Information" page
 	if selection == "Information":
 		st.info("General Information")
