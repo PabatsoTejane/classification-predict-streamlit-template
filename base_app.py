@@ -78,9 +78,10 @@ def main():
 		st.info("Prediction with ML Models")
 
 		st.subheader("Prediction model selection")
-		if st.checkbox('Model 1'): 
-		if st.checkbox('Model 2'): 
-		if st.checkbox('Model 3'): 
+		
+	if st.checkbox('Model 1'): 
+	if st.checkbox('Model 2'): 
+	if st.checkbox('Model 3'): 
 		# Creating a text box for user input
 		tweet_text = st.text_area("Enter Text","Type Here")
 
