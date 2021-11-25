@@ -54,8 +54,7 @@ def main():
 		st.markdown("Team Members")
 
 		st.subheader("Project Problem Statement")
-		if st.checkbox('Show raw data'): 
-			st.info("Creating a twitter classifier")
+		st.info("Creating a twitter classifier")
 
 	# Building out the "Information" page
 	if selection == "Information":
