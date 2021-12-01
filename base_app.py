@@ -37,7 +37,7 @@ news_vectorizer = open("resources/tfidfvect.pkl","rb")
 tweet_cv = joblib.load(news_vectorizer) # loading your vectorizer from the pkl file
 
 # Load your raw data
-raw = pd.read_csv("train.csv")
+raw_data = pd.read_csv("train.csv")
 
 @st.cache
 def get_data(filename):
@@ -71,7 +71,8 @@ def main():
 
 	if selection == "EDA":
 		st.subheader("Exploratory data analysis")
-	
+		st.markdown("The graph below shows the distribution of the four possible sentiments which are represented in the raw data.")
+			
 	# Building out the "Information" page
 	if selection == "Information":
 		st.info("General Information")
@@ -80,7 +81,7 @@ def main():
 
 		st.subheader("Raw Twitter data and label")
 		if st.checkbox('Show raw data'): # data is hidden if box is unchecked
-			st.write(raw[['sentiment', 'message']]) # will write the df to the page
+			st.write(raw_data[['sentiment', 'message']]) # will write the df to the page
 
 	# Building out the predication page
 	if selection == "Prediction":
