@@ -68,7 +68,7 @@ def main():
 		st.markdown(" * **Collen Bothma** ")
 
 		st.subheader("Project Problem Statement")
-		st.info("Creating a twitter classifier")
+		st.info("The client has tasked the team with creating a tweet classifier: that will assist in identifying potential customers for their eco friendly products and services")
 
 	if selection == "EDA":
 		st.info("Exploratoty Data Analysis")
