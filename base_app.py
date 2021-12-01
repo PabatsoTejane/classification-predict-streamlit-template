@@ -37,7 +37,7 @@ news_vectorizer = open("resources/tfidfvect.pkl","rb")
 tweet_cv = joblib.load(news_vectorizer) # loading your vectorizer from the pkl file
 
 # Load your raw data
-raw = pd.read_csv("resources/train.csv")
+raw = pd.read_csv("train.csv")
 
 @st.cache
 def get_data(filename):
@@ -59,7 +59,6 @@ def main():
 	selection = st.sidebar.selectbox("Choose option", options)
 
 	if selection == "Summary":
-		st.info("Team and Project Summary")
 		st.subheader("Team Members")
 		st.markdown(" * **Pabatso Tejane** ")
 		st.markdown(" * **Olefile Ramoitheki** ")
