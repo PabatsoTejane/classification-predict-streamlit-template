@@ -28,12 +28,22 @@ import joblib,os
 # Data dependencies
 import pandas as pd
 
+# Plotting libraries
+import plotly.express as px
+import plotly.graph_objects as go
+
 # Vectorizer
 news_vectorizer = open("resources/tfidfvect.pkl","rb")
 tweet_cv = joblib.load(news_vectorizer) # loading your vectorizer from the pkl file
 
 # Load your raw data
 raw = pd.read_csv("resources/train.csv")
+
+@st.cache
+def get_data(filename):
+	twitter_data = pd.read_csv(filename)
+
+	return twitter_data
 
 # The main function where we will build the actual app
 def main():
