@@ -67,7 +67,7 @@ def main():
     st.title('Tweets  Unclassified  :)')
 
     from PIL import Image
-    image = Image.open('resources/imgs/Tweeter.png')
+    image = Image.open('images//TweeterValue.png')
 
     st.image(image, caption='Which Tweet are you?', use_column_width=True)
 
