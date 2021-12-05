@@ -72,8 +72,8 @@ def get_data(filename):
 	return data
 
 # Load your raw data
-train_data = pd.read_csv("train.csv")
-test_data = pd.read_csv("test_with_no_labels.csv")
+train_data = get_data("train.csv")
+test_data = get_data("test_with_no_labels.csv")
 
 #Data pre-processing functions
 
