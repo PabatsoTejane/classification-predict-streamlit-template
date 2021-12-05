@@ -65,7 +65,8 @@ news_vectorizer = open("resources/tfidfvect.pkl","rb")
 tweet_cv = joblib.load(news_vectorizer) # loading your vectorizer from the pkl file
 
 # Load your raw data
-raw_data = pd.read_csv("train.csv")
+train_data = pd.read_csv("train2.csv")
+test_data = pd.read_csv("test_with_no_labesls.csv")
 
 @st.cache
 def get_data(filename):
