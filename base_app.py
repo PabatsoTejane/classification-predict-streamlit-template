@@ -72,7 +72,7 @@ tweet_cv = joblib.load(news_vectorizer) # loading your vectorizer from the pkl f
 	#return data
 
 # Load your raw data
-train_data = pd.read_csv("train2.csv")
+train_data = pd.read_csv("train.csv")
 test_data = pd.read_csv("test_with_no_labels.csv")
 
 #Data pre-processing functions
