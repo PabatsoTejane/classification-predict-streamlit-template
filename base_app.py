@@ -72,10 +72,17 @@ def get_data(filename):
 	return data
 
 # Load your raw data
-train_data = get_data("train.csv")
+tweets = get_data("train.csv")
 test_data = get_data("test_with_no_labels.csv")
 
 #Data pre-processing functions
+from copy import deepcopy
+eda = deepcopy(tweets)
+
+sentiment_num2name = { -1: "Anti", 0: "Neutral", 1: "Pro", 2: "News"}
+eda["sentiment"] = eda["sentiment"].apply(lambda num: sentiment_num2name[num])
+eda.head()
+
 
 
 # The main function where we will build the actual app
@@ -105,6 +112,8 @@ def main():
 	if selection == "EDA":
 		st.subheader("Exploratory data analysis")
 		st.markdown("The graph below shows the distribution of the four possible sentiments which are represented in the raw data.")
+
+
 			
 	# Building out the "Information" page
 	if selection == "Information":
