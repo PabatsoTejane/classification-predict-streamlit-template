@@ -83,6 +83,29 @@ sentiment_num2name = { -1: "Anti", 0: "Neutral", 1: "Pro", 2: "News"}
 eda["sentiment"] = eda["sentiment"].apply(lambda num: sentiment_num2name[num])
 eda.head()
 
+def cleaner(tweet):
+    tweet = tweet.lower()
+    
+    to_del = [
+        r"@[\w]*",  # strip account mentions
+        r"http(s?):\/\/.*\/\w*",  # strip URLs
+        r"#\w*",  # strip hashtags
+        r"\d+",  # delete numeric values
+        r"rt[\s]+",
+        r"U+FFFD",  # remove the "character note present" diamond
+    ]
+    for key in to_del:
+        tweet = re.sub(key, "", tweet)
+    
+    # strip punctuation and special characters
+    tweet = re.sub(r"[,.;':@#?!\&/$]+\ *", " ", tweet)
+    # strip excess white-space
+    tweet = re.sub(r"\s\s+", " ", tweet)
+    
+    return tweet.lstrip(" ")
+
+eda["message"] = eda["message"].apply(cleaner)
+
 
 
 # The main function where we will build the actual app
@@ -124,6 +147,8 @@ def main():
 		st.subheader("Raw Twitter data and label")
 		if st.checkbox('Show raw data'): # data is hidden if box is unchecked
 			st.write(tweets[['sentiment', 'message']]) # will write the df to the page
+		if st.checkbox('Show clean data'): # data is hidden if box is unchecked
+			st.write(eda[['sentiment', 'message']]) # will write the df to the page
 
 	# Building out the predication page
 	if selection == "Prediction":
