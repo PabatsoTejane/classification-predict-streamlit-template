@@ -73,6 +73,7 @@ def get_data(filename):
 	return data
 
 # Load your raw data
+raw_tweets = get_data("train.csv")
 tweets = get_data("train.csv")
 test_data = get_data("test_with_no_labels.csv")
 
@@ -169,9 +170,9 @@ def main():
 
 		st.subheader("Raw Twitter data and label")
 		if st.checkbox('Show raw data'): # data is hidden if box is unchecked
-			st.write(tweets[['sentiment', 'message']]) # will write the df to the page
+			st.write(raw_tweets[['sentiment', 'message']]) # will write the df to the page
 		if st.checkbox('Show clean data'): # data is hidden if box is unchecked
-			st.write(eda[['sentiment', 'message']]) # will write the df to the page
+			st.write(tweets[['sentiment', 'message']]) # will write the df to the page
 
 	# Building the predication page
 	if selection == "Prediction":
