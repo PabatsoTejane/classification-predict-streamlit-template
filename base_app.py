@@ -25,6 +25,34 @@
 import streamlit as st
 import joblib,os
 
+# Libraries to be used in data cleaning and model
+import nltk
+from nltk import TreebankWordTokenizer, SnowballStemmer
+from nltk.stem import WordNetLemmatizer
+from nltk.corpus import stopwords
+import string
+import urllib
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn import metrics
+from sklearn.metrics import accuracy_score
+from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.metrics import roc_auc_score
+from sklearn.metrics import recall_score
+from sklearn.metrics import precision_score
+from sklearn.metrics import f1_score
+from sklearn.ensemble import RandomForestClassifier
+
+import numpy as np # linear algebra
+import matplotlib.pyplot as plt
+import re
+import seaborn as sns
+import warnings
+
+warnings.filterwarnings('ignore')
+
 # Data dependencies
 import pandas as pd
 
@@ -44,6 +72,9 @@ def get_data(filename):
 	twitter_data = pd.read_csv(filename)
 
 	return twitter_data
+
+#Data pre-processing functions
+
 
 # The main function where we will build the actual app
 def main():
