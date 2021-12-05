@@ -112,7 +112,7 @@ def main():
 	if selection == "EDA":
 		st.subheader("Exploratory data analysis")
 		st.markdown("The graph below shows the distribution of the four possible sentiments which are represented in the raw data.")
-		st.image()
+		st.image('images//TwitterValue.PNG')
 
 			
 	# Building out the "Information" page
