@@ -55,6 +55,7 @@ warnings.filterwarnings('ignore')
 
 # Data dependencies
 import pandas as pd
+import numpy as np
 
 # Plotting libraries
 import plotly.express as px
