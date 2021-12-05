@@ -21,8 +21,6 @@ from nltk import pos_tag
 import seaborn as sns
 import re
 
-from nlppreprocess import NLP
-nlp = NLP()
 
 def cleaner(line):
 
