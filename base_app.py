@@ -66,7 +66,7 @@ import plotly.graph_objects as go
 news_vectorizer = open("resources/tfidfvect.pkl","rb")
 tweet_cv = joblib.load(news_vectorizer) # loading your vectorizer from the pkl file
 
-@st.cache
+@st.cache(allow_output_mutation=True)
 def get_data(filename):
 	data = pd.read_csv(filename)
 
