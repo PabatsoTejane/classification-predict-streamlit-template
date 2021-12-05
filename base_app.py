@@ -29,7 +29,7 @@ import joblib,os
 import nltk
 from nltk import TreebankWordTokenizer, SnowballStemmer
 from nltk.stem import WordNetLemmatizer
-from nltk.corpus import stopwords
+from nltk.corpus import stopwords, wordnet
 import string
 import urllib
 from sklearn.feature_extraction.text import CountVectorizer
