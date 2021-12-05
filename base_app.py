@@ -76,12 +76,6 @@ tweets = get_data("train.csv")
 test_data = get_data("test_with_no_labels.csv")
 
 #Data pre-processing functions
-from copy import deepcopy
-eda = deepcopy(tweets)
-
-sentiment_num2name = { -1: "Anti", 0: "Neutral", 1: "Pro", 2: "News"}
-eda["sentiment"] = eda["sentiment"].apply(lambda num: sentiment_num2name[num])
-eda.head()
 
 def cleaner(tweet):
     tweet = tweet.lower()
@@ -104,9 +98,35 @@ def cleaner(tweet):
     
     return tweet.lstrip(" ")
 
-eda["message"] = eda["message"].apply(cleaner)
+def lemmatizer(df):
+    df["length"] = df["message"].str.len()
+    df["tokenized"] = df["message"].apply(word_tokenize)
+    df["parts-of-speech"] = df["tokenized"].apply(nltk.tag.pos_tag)
+    
+    def str2wordnet(tag):
+        conversion = {"J": wordnet.ADJ, "V": wordnet.VERB, "N": wordnet.NOUN, "R": wordnet.ADV}
+        try:
+            return conversion[tag[0].upper()]
+        except KeyError:
+            return wordnet.NOUN
+    
+    wnl = WordNetLemmatizer()
+    df["parts-of-speech"] = df["parts-of-speech"].apply(
+        lambda tokens: [(word, str2wordnet(tag)) for word, tag in tokens]
+    )
+    df["lemmatized"] = df["parts-of-speech"].apply(
+        lambda tokens: [wnl.lemmatize(word, tag) for word, tag in tokens]
+    )
+    df["lemmatized"] = df["lemmatized"].apply(lambda tokens: " ".join(map(str, tokens)))
+    
+    return df
 
+# Application of the function to clean the tweets
+tweets['message'] = tweets['message'].apply(cleaner)
+test_data['message'] = test_data['message'].apply(cleaner)
 
+tweets = lemmatizer(tweets)
+test_data = lemmatizer(test_data)
 
 # The main function where we will build the actual app
 def main():
@@ -121,6 +141,7 @@ def main():
 	options = ["Summary", "EDA", "Prediction", "Information"]
 	selection = st.sidebar.selectbox("Choose option", options)
 
+	# Building the "Summary" page
 	if selection == "Summary":
 		st.subheader("Team Members")
 		st.markdown(" * **Pabatso Tejane** ")
@@ -132,13 +153,14 @@ def main():
 		st.subheader("Project Problem Statement")
 		st.info("The client has tasked the team with creating a tweet classifier: that will assist in identifying potential customers for their eco friendly products and services")
 
+	# Building the "EDA" page
 	if selection == "EDA":
 		st.subheader("Exploratory data analysis")
 		st.markdown("The graph below shows the distribution of the four possible sentiments which are represented in the raw data.")
 		st.image('images//TwitterValue.PNG')
 
 			
-	# Building out the "Information" page
+	# Building the "Information" page
 	if selection == "Information":
 		st.info("General Information")
 		# You can read a markdown file from supporting resources folder
@@ -150,7 +172,7 @@ def main():
 		if st.checkbox('Show clean data'): # data is hidden if box is unchecked
 			st.write(eda[['sentiment', 'message']]) # will write the df to the page
 
-	# Building out the predication page
+	# Building the predication page
 	if selection == "Prediction":
 		st.info("Prediction with ML Models")
 
