@@ -27,6 +27,7 @@ import joblib,os
 
 # Libraries to be used in data cleaning and model
 import nltk
+from nltk.tokenize import word_tokenize
 from nltk import TreebankWordTokenizer, SnowballStemmer
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords, wordnet
@@ -175,7 +176,6 @@ def main():
 	# Building the predication page
 	if selection == "Prediction":
 		st.info("Prediction with ML Models")
-
 		st.subheader("Prediction model selection")
 
 	#if st.checkbox('Model 1'): 
