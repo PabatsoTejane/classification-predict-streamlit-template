@@ -65,11 +65,11 @@ import plotly.graph_objects as go
 news_vectorizer = open("resources/tfidfvect.pkl","rb")
 tweet_cv = joblib.load(news_vectorizer) # loading your vectorizer from the pkl file
 
-#@st.cache
-#def get_data(filename):
-	#data = pd.read_csv(filename)
+@st.cache
+def get_data(filename):
+	data = pd.read_csv(filename)
 
-	#return data
+	return data
 
 # Load your raw data
 train_data = pd.read_csv("train.csv")
@@ -114,7 +114,7 @@ def main():
 
 		st.subheader("Raw Twitter data and label")
 		if st.checkbox('Show raw data'): # data is hidden if box is unchecked
-			st.write(raw_data[['sentiment', 'message']]) # will write the df to the page
+			st.write(train_data[['sentiment', 'message']]) # will write the df to the page
 
 	# Building out the predication page
 	if selection == "Prediction":
