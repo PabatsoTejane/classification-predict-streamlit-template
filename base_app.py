@@ -22,6 +22,7 @@
 
 """
 # Streamlit dependencies
+from nltk import text
 import streamlit as st
 import joblib,os
 
@@ -63,7 +64,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 # Vectorizer
-news_vectorizer = open("resources/tfidfvect.pkl","rb")
+news_vectorizer = open("resources//tfidfvect.pkl","rb")
 tweet_cv = joblib.load(news_vectorizer) # loading your vectorizer from the pkl file
 
 #@st.cache(allow_output_mutation=True)
@@ -210,25 +211,27 @@ def main():
 				st.text("Original test ::\n{}".format(input_text))
 				text_clean = cleaner(input_text) #passing the text through the 'cleaner' function
 				text_lemma = lemmatizer(text_clean) #lemmatizing text
+				vtext = tweet_cv.transform([text_lemma]).toarray()
+
 				if model_choice == 'Linear SVC':
 					predictor = load_prediction_models("LinearSVC.pkl")
-					prediction = predictor.predict(text_lemma)
+					prediction = predictor.predict(vtext)
                     # st.write(prediction)
 				elif model_choice == 'Multinomial NB':
 					predictor = load_prediction_models("MultinomialNB.pkl")
-					prediction = predictor.predict(text_lemma)
+					prediction = predictor.predict(vtext)
                     # st.write(prediction)
 				elif model_choice == 'Logistic Regession':
 					predictor = load_prediction_models("LogisticRegression.pkl")
-					prediction = predictor.predict(text_lemma)
+					prediction = predictor.predict(vtext)
                     # st.write(prediction)
 				elif model_choice == 'K-Neighbours':
 					predictor = load_prediction_models("KNeighbours.pkl")
-					prediction = predictor.predict(text_lemma)
+					prediction = predictor.predict(vtext)
 					# st.write(prediction)
 				elif model_choice == 'SGD Classifier':
 					predictor = load_prediction_models("SGDClassifier.pkl")
-					prediction = predictor.predict(text_lemma)
+					prediction = predictor.predict(vtext)
 					# st.write(prediction)
 				final_result = get_keys(prediction,prediction_labels)
 				st.success("Tweet Categorized as:: {}".format(final_result))
