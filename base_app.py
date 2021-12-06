@@ -205,7 +205,7 @@ def main():
 			ml_models = ["Linear SVC","Multinomial NB","Logistic Regression","K-Neighbours","SGD classifier"]
 			model_choice = st.selectbox("Choose ML Model",ml_models)
 		
-			prediction_labels = {'Negative':-1,'Neutral':0,'Positive':1,'News':2}
+			#prediction_labels = {'Negative':-1,'Neutral':0,'Positive':1,'News':2}
 			
 			if st.button('Classify'):
 				st.text("Original test ::\n{}".format(input_text))
@@ -233,6 +233,7 @@ def main():
 					predictor = load_prediction_models("SGDClassifier.pkl")
 					prediction = predictor.predict(text_lemma)
 					# st.write(prediction)
+				prediction_labels = {'Negative':-1,'Neutral':0,'Positive':1,'News':2}
 				final_result = get_keys(prediction,prediction_labels)
 				st.success("Tweet Categorized as: {}".format(final_result))
 				#st.success("Text Categorized as: {}".format(prediction))
