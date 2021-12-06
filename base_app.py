@@ -160,6 +160,8 @@ def main():
 		st.subheader("Exploratory data analysis")
 		st.markdown("The graph below shows the distribution of the four possible sentiments which are represented in the raw data.")
 		st.image('images//TwitterValue.PNG')
+		st.image('images//wordcloud.png')
+		st.image('images//boxplot.png')
 
 			
 	# Building the "Information" page
