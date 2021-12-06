@@ -276,9 +276,9 @@ def main():
 					predictor = load_prediction_models("SGDClassifier.pkl")
 					prediction = predictor.predict(text_lemma)
 					# st.write(prediction)
-					prediction_labels = {'Negative':-1,'Neutral':0,'Positive':1,'News':2}
-					final_result = get_keys(prediction,prediction_labels)
-					st.success("Tweet Categorized as:: {}".format(prediction))
+					#prediction_labels = {'Negative':-1,'Neutral':0,'Positive':1,'News':2}
+					#final_result = get_keys(prediction,prediction_labels)
+					st.success("Tweet Categorized as: {}".format(prediction))
 				#st.success("Text Categorized as: {}".format(prediction))
 
 			#if st.button("Classify"):
