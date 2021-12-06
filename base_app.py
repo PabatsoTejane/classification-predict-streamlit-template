@@ -212,6 +212,7 @@ def main():
 				text_clean = cleaner(input_text) #passing the text through the 'cleaner' function
 				lemma = WordNetLemmatizer()
 				text_lemma = lemma.lemmatize(text_clean)
+				text_in = tweet_cv.transform([text_lemma]).toarray()
 
 				if model_choice == 'Linear SVC':
 					predictor = load_prediction_models("LinearSVC.pkl")
