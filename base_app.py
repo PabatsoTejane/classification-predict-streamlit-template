@@ -210,9 +210,7 @@ def main():
 				st.text("Original test ::\n{}".format(input_text))
 				text_clean = cleaner(input_text) #passing the text through the 'cleaner' function
 				lemma = WordNetLemmatizer()
-				text_lemma = ' '.join([lemmatizer.lemmatize(word, po[0].lower()) if po[0].lower() in ['n', 'r', 'v', 'a'] else word for word, po in text_clean])
-				
-				
+				text_lemma = lemma.lemmatize(text_clean)
 
 				if model_choice == 'Linear SVC':
 					predictor = load_prediction_models("LinearSVC.pkl")
