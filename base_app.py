@@ -213,13 +213,13 @@ def main():
 				lemma = WordNetLemmatizer()
 				text_lem = lemma.lemmatize(text_clean)
 				text_lemma = tweet_cv.transform([text_lem]).toarray()
-				
+
 				if model_choice == 'Linear SVC':
 					predictor = load_prediction_models("LinearSVC.pkl")
 					prediction = predictor.predict(text_lemma)
                     # st.write(prediction)
 				elif model_choice == 'Multinomial NB':
-					predictor = load_prediction_models("MultinomialNB.pkl")
+					predictor = load_prediction_models("MultinomialNB2.pkl")
 					prediction = predictor.predict(text_lemma)
 					st.write(prediction)
 				elif model_choice == 'Logistic Regession':
