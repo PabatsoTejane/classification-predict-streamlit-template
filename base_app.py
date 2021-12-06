@@ -171,7 +171,7 @@ def main():
 		st.subheader("Raw Twitter data and label")
 		if st.checkbox('Show raw data'): # data is hidden if box is unchecked
 			st.write(raw_tweets[['sentiment', 'message']]) # will write the df to the page
-		if st.checkbox('Show clean data'): # data is hidden if box is unchecked
+		if st.checkbox('Show cleaned data'): # data is hidden if box is unchecked
 			st.write(tweets[['sentiment', 'message']]) # will write the df to the page
 
 	# Building the predication page
