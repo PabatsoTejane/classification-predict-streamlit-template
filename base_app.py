@@ -232,7 +232,7 @@ def main():
 					predictor = load_prediction_models("SGDClassifier.pkl")
 					prediction = predictor.predict(text_lemma)
 					# st.write(prediction)
-				final_result = get_keys(prediction,prediction_labels)
+					final_result = get_keys(prediction,prediction_labels)
 				st.success("Tweet Categorized as:: {}".format(final_result))
 
 			#if st.button("Classify"):
