@@ -234,7 +234,8 @@ def main():
 					prediction = predictor.predict(text_lemma)
 					# st.write(prediction)
 				final_result = get_keys(prediction,prediction_labels)
-				st.success("Tweet Categorized as:: {}".format(final_result))
+				st.success("Tweet Categorized as: {}".format(final_result))
+				#st.success("Text Categorized as: {}".format(prediction))
 
 			#if st.button("Classify"):
 			# Transforming user input with vectorizer
