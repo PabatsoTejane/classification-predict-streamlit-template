@@ -160,8 +160,13 @@ def main():
 		st.subheader("Exploratory data analysis")
 		st.markdown("The graph below shows the distribution of the four possible sentiments which are represented in the raw data.")
 		st.image('images//TwitterValue.PNG')
+		st.markdown("The graph below shows the buzzwords used in the tweets.")
 		st.image('images//wordcloud.png')
+		st.markdown("The table  below shows the counts of the most popular hashtags")
+		st.image('images//counts.png')
+		st.markdown("The graph below shows the boxplot of the number of words per tweet")
 		st.image('images//boxplot.png')
+
 
 			
 	# Building the "Information" page
