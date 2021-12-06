@@ -254,7 +254,7 @@ def main():
 				text_lemma = tweet_cv.transform([text1]).toarray()
 
 				if model_choice == 'Linear SVC':
-					predictor = load_prediction_models("LinearSVC2.pkl")
+					predictor = joblib.load(open(os.path.join("LinearSVC2.pkl"),"rb"))
 					prediction = predictor.predict(text_lemma)
                     # st.write(prediction)
 				elif model_choice == 'Multinomial NB':
