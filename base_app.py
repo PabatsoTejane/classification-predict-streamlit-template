@@ -257,28 +257,28 @@ def main():
 					predictor = joblib.load(open(os.path.join("LinearSVC2.pkl"),"rb"))
 					prediction = predictor.predict(text_lemma)
                     # st.write(prediction)
-				elif model_choice == 'Multinomial NB':
+				if model_choice == 'Multinomial NB':
 					predictor = joblib.load(open(os.path.join("resources/Logistic_regression.pkl"),"rb"))
 					prediction = predictor.predict(text_lemma)
 				#elif model_choice == 'Multinomial NB':
 					#predictor = load_prediction_models("MultinomialNB2.pkl")
 					#prediction = predictor.predict(text_lemma)
 					#st.write(prediction)
-				elif model_choice == 'Logistic Regession':
+				if model_choice == 'Logistic Regession':
 					predictor = load_prediction_models("LogisticRegression.pkl")
 					prediction = predictor.predict(text_lemma)
                     # st.write(prediction)
-				elif model_choice == 'K-Neighbours':
+				if model_choice == 'K-Neighbours':
 					predictor = load_prediction_models("KNeighbours.pkl")
 					prediction = predictor.predict(text_lemma)
 					# st.write(prediction)
-				elif model_choice == 'SGD Classifier':
+				if model_choice == 'SGD Classifier':
 					predictor = load_prediction_models("SGDClassifier.pkl")
 					prediction = predictor.predict(text_lemma)
 					# st.write(prediction)
-				prediction_labels = {'Negative':-1,'Neutral':0,'Positive':1,'News':2}
-				final_result = get_keys(prediction,prediction_labels)
-				st.success("Tweet Categorized as: {}".format(final_result))
+					#prediction_labels = {'Negative':-1,'Neutral':0,'Positive':1,'News':2}
+					#final_result = get_keys(prediction,prediction_labels)
+				st.success("Tweet Categorized as: {}".format(prediction))
 				#st.success("Text Categorized as: {}".format(prediction))
 
 			#if st.button("Classify"):
