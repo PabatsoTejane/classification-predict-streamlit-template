@@ -105,6 +105,7 @@ def get_data(filename):
 
 	return data
 
+data = pd.read_csv('resources/train.csv')
 # Load your raw data
 raw_tweets = get_data("train.csv")
 tweets = get_data("train.csv")
@@ -112,6 +113,7 @@ test_data = get_data("test_with_no_labels.csv")
 
 #Data pre-processing functions
 """
+
 def cleaner(tweet):
     tweet = tweet.lower()
     
@@ -162,11 +164,12 @@ test_data['message'] = test_data['message'].apply(cleaner)
 
 tweets = lemmatizer(tweets)
 test_data = lemmatizer(test_data)
+
 """
 
 # The main function where we will build the actual app
 def main():
-	"""Tweet Classifier App with Streamlit """
+	#Tweet Classifier App with Streamlit 
 
 	# Creates a main title and subheader on your page -
 	# these are static across all pages
@@ -239,7 +242,6 @@ def main():
 			ml_models = ["Linear SVC","Multinomial NB","Logistic Regression","K-Neighbours","SGD classifier"]
 			model_choice = st.selectbox("Choose ML Model",ml_models)
 		
-			#prediction_labels = {'Negative':-1,'Neutral':0,'Positive':1,'News':2}
 			
 			if st.button('Classify'):
 				#st.text("Original test ::\n{}".format(input_text))
@@ -273,7 +275,7 @@ def main():
 					# st.write(prediction)
 					prediction_labels = {'Negative':-1,'Neutral':0,'Positive':1,'News':2}
 					final_result = get_keys(prediction,prediction_labels)
-					st.success("Tweet Categorized as: {}".format(prediction))
+					st.success("Tweet Categorized as:: {}".format(prediction))
 				#st.success("Text Categorized as: {}".format(prediction))
 
 			#if st.button("Classify"):
