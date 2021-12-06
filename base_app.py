@@ -31,6 +31,7 @@ from nltk.tokenize import word_tokenize
 from nltk import TreebankWordTokenizer, SnowballStemmer
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords, wordnet
+from nltk import pos_tag
 import string
 import urllib
 from nlppreprocess import NLP
