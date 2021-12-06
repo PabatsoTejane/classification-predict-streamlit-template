@@ -101,7 +101,7 @@ def cleaner(tweet):
     return tweet.lstrip(" ")
 
 def lemmatizer(df):
-    #df["length"] = df["message"].str.len()
+    df["length"] = df["message"].str.len()
     df["tokenized"] = df["message"].apply(word_tokenize)
     df["parts-of-speech"] = df["tokenized"].apply(nltk.tag.pos_tag)
     
@@ -209,7 +209,9 @@ def main():
 			if st.button('Classify'):
 				st.text("Original test ::\n{}".format(input_text))
 				text_clean = cleaner(input_text) #passing the text through the 'cleaner' function
-				text_lemma = lemmatizer(text_clean) #lemmatizing text
+				lemma = WordNetLemmatizer()
+				text_lemma = ' '.join([lemmatizer.lemmatize(word, po[0].lower()) if po[0].lower() in ['n', 'r', 'v', 'a'] else word for word, po in text_clean])
+				
 				
 
 				if model_choice == 'Linear SVC':
