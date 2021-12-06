@@ -204,6 +204,7 @@ def main():
 			input_text = st.text_area('Enter Text (max. 140 characters):') ##user entering a single text to classify and predict
 			ml_models = ["Linear SVC","Multinomial NB","Logistic Regression","K-Neighbours","SGD classifier"]
 			model_choice = st.selectbox("Choose ML Model",ml_models)
+		
 			prediction_labels = {'Negative':-1,'Neutral':0,'Positive':1,'News':2}
 			
 			if st.button('Classify'):
@@ -232,8 +233,8 @@ def main():
 					predictor = load_prediction_models("SGDClassifier.pkl")
 					prediction = predictor.predict(text_lemma)
 					# st.write(prediction)
-					final_result = get_keys(prediction,prediction_labels)
-					st.success("Tweet Categorized as:: {}".format(final_result))
+				final_result = get_keys(prediction,prediction_labels)
+				st.success("Tweet Categorized as:: {}".format(final_result))
 
 			#if st.button("Classify"):
 			# Transforming user input with vectorizer
