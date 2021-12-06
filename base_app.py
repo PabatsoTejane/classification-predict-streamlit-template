@@ -258,7 +258,7 @@ def main():
 					prediction = predictor.predict(text_lemma)
                     # st.write(prediction)
 				elif model_choice == 'Multinomial NB':
-					predictor = load_prediction_models("MultinomialNB2.pkl")
+					predictor = load_prediction_models("MultinomialNB.pkl")
 					prediction = predictor.predict(text_lemma)
 					st.write(prediction)
 				elif model_choice == 'Logistic Regession':
