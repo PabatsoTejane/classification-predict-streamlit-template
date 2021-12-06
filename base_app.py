@@ -175,61 +175,56 @@ def main():
 			st.write(tweets[['sentiment', 'message']]) # will write the df to the page
 
 	if selection == 'Prediction':
-
-    	st.info('Classify your tweet here using the ML Models below')
+		st.info('Classify your tweet here using the ML Models below')
 		data_source = ['Select option', 'Single text'] ## differentiating between a single text and a dataset inpit
-
-        source_selection = st.selectbox('What to classify?', data_source)
+		source_selection = st.selectbox('What to classify?', data_source)
 
         # Load Our Models
-        def load_prediction_models(model_file):
-            loaded_models = joblib.load(open(os.path.join(model_file),"rb"))
-            return loaded_models
+		def load_prediction_models(model_file):
+			loaded_models = joblib.load(open(os.path.join(model_file),"rb"))
+			return loaded_models
 
         # Getting the predictions
-        def get_keys(val,my_dict):
-            for key,value in my_dict.items():
-                if val == value:
-                    return key
-
-
-        if source_selection == 'Single text':
+		def get_keys(val,my_dict):
+			for key,value in my_dict.items():
+				if val == value:
+					return key
+			
+		
+		if source_selection == 'Single text':
             ### SINGLE TWEET CLASSIFICATION ###
-            st.subheader('Single tweet classification')
-
-            input_text = st.text_area('Enter Text (max. 140 characters):') ##user entering a single text to classify and predict
-            ml_models = ["Linear SVC","Multinomial NB","Logistic Regression","K-Neighbours","SGD classifier"]
-            model_choice = st.selectbox("Choose ML Model",ml_models)
-
-            prediction_labels = {'Negative':-1,'Neutral':0,'Positive':1,'News':2}
-            if st.button('Classify'):
-
-                st.text("Original test ::\n{}".format(input_text))
-                text_clean = cleaner(input_text) #passing the text through the 'cleaner' function
-                text_lemma = lemmatizer(text_clean) #lemmatizing text
-                if model_choice == 'Linear SVC':
-                    predictor = load_prediction_models("LinearSVC.pkl")
-                    prediction = predictor.predict(text_lemma)
+			st.subheader('Single tweet classification')
+			input_text = st.text_area('Enter Text (max. 140 characters):') ##user entering a single text to classify and predict
+			ml_models = ["Linear SVC","Multinomial NB","Logistic Regression","K-Neighbours","SGD classifier"]
+			model_choice = st.selectbox("Choose ML Model",ml_models)
+			prediction_labels = {'Negative':-1,'Neutral':0,'Positive':1,'News':2}
+			
+			if st.button('Classify'):
+				st.text("Original test ::\n{}".format(input_text))
+				text_clean = cleaner(input_text) #passing the text through the 'cleaner' function
+				text_lemma = lemmatizer(text_clean) #lemmatizing text
+				if model_choice == 'Linear SVC':
+					predictor = load_prediction_models("LinearSVC.pkl")
+					prediction = predictor.predict(text_lemma)
                     # st.write(prediction)
-                elif model_choice == 'Multinomial NB':
-                    predictor = load_prediction_models("MultinomialNB.pkl")
-                    prediction = predictor.predict(text_lemma)
+				elif model_choice == 'Multinomial NB':
+					predictor = load_prediction_models("MultinomialNB.pkl")
+					prediction = predictor.predict(text_lemma)
                     # st.write(prediction)
-                elif model_choice == 'Logistic Regession':
-                    predictor = load_prediction_models("LogisticRegression.pkl")
-                    prediction = predictor.predict(text_lemma)
+				elif model_choice == 'Logistic Regession':
+					predictor = load_prediction_models("LogisticRegression.pkl")
+					prediction = predictor.predict(text_lemma)
                     # st.write(prediction)
-                elif model_choice == 'K-Neighbours':
-                    predictor = load_prediction_models("KNeighbours.pkl")
-                    prediction = predictor.predict(text_lemma)
+				elif model_choice == 'K-Neighbours':
+					predictor = load_prediction_models("KNeighbours.pkl")
+					prediction = predictor.predict(text_lemma)
 					# st.write(prediction)
 				elif model_choice == 'SGD Classifier':
-                    predictor = load_prediction_models("SGDClassifier.pkl")
-                    prediction = predictor.predict(text_lemma)
+					predictor = load_prediction_models("SGDClassifier.pkl")
+					prediction = predictor.predict(text_lemma)
 					# st.write(prediction)
-
-                final_result = get_keys(prediction,prediction_labels)
-                st.success("Tweet Categorized as:: {}".format(final_result))
+				final_result = get_keys(prediction,prediction_labels)
+				st.success("Tweet Categorized as:: {}".format(final_result))
 
 			#if st.button("Classify"):
 			# Transforming user input with vectorizer
