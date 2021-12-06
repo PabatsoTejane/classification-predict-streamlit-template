@@ -258,9 +258,12 @@ def main():
 					prediction = predictor.predict(text_lemma)
                     # st.write(prediction)
 				elif model_choice == 'Multinomial NB':
-					predictor = load_prediction_models("MultinomialNB2.pkl")
+					predictor = joblib.load(open(os.path.join("resources/Logistic_regression.pkl"),"rb"))
 					prediction = predictor.predict(text_lemma)
-					st.write(prediction)
+				#elif model_choice == 'Multinomial NB':
+					#predictor = load_prediction_models("MultinomialNB2.pkl")
+					#prediction = predictor.predict(text_lemma)
+					#st.write(prediction)
 				elif model_choice == 'Logistic Regession':
 					predictor = load_prediction_models("LogisticRegression.pkl")
 					prediction = predictor.predict(text_lemma)
