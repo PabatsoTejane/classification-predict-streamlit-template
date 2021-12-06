@@ -62,6 +62,36 @@ import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
 
+def cleaner(line):
+
+    # Removes RT, url and trailing white spaces
+    line = re.sub(r'^RT ','', re.sub(r'https://t.co/\w+', '', line).strip()) 
+
+    # Removes puctuation
+    punctuation = re.compile("[.;:!\'’‘“”?,\"()\[\]]")
+    tweet = punctuation.sub("", line.lower()) 
+
+    # Removes stopwords
+    nlp_for_stopwords = NLP(replace_words=True, remove_stopwords=True, remove_numbers=True, remove_punctuations=False) 
+    tweet = nlp_for_stopwords.process(tweet) # This will remove stops words that are not necessary. The idea is to keep words like [is, not, was]
+    # https://towardsdatascience.com/why-you-should-avoid-removing-stopwords-aa7a353d2a52
+
+    # tokenisation
+    # We used the split method instead of the word_tokenise library because our tweet is already clean at this point
+    # and the twitter data is not complicated
+    tweet = tweet.split() 
+
+    # POS 
+    pos = pos_tag(tweet)
+
+
+    # Lemmatization
+    lemmatizer = WordNetLemmatizer()
+    tweet = ' '.join([lemmatizer.lemmatize(word, po[0].lower()) if po[0].lower() in ['n', 'r', 'v', 'a'] else word for word, po in pos])
+    # tweet = ' '.join([lemmatizer.lemmatize(word, 'v') for word in tweet])
+
+    return tweet
+
 # Vectorizer
 news_vectorizer = open("resources//tfidfvect.pkl","rb")
 tweet_cv = joblib.load(news_vectorizer) # loading your vectorizer from the pkl file
@@ -78,7 +108,7 @@ tweets = get_data("train.csv")
 test_data = get_data("test_with_no_labels.csv")
 
 #Data pre-processing functions
-
+"""
 def cleaner(tweet):
     tweet = tweet.lower()
     
@@ -129,6 +159,7 @@ test_data['message'] = test_data['message'].apply(cleaner)
 
 tweets = lemmatizer(tweets)
 test_data = lemmatizer(test_data)
+"""
 
 # The main function where we will build the actual app
 def main():
@@ -208,18 +239,21 @@ def main():
 			#prediction_labels = {'Negative':-1,'Neutral':0,'Positive':1,'News':2}
 			
 			if st.button('Classify'):
+				#st.text("Original test ::\n{}".format(input_text))
+				#text_clean = cleaner(input_text) #passing the text through the 'cleaner' function
+				#lemma = WordNetLemmatizer()
+				#text_lem = lemma.lemmatize(text_clean)
+				#text_lemma = tweet_cv.transform([text_lem]).toarray()
 				st.text("Original test ::\n{}".format(input_text))
-				text_clean = cleaner(input_text) #passing the text through the 'cleaner' function
-				lemma = WordNetLemmatizer()
-				text_lem = lemma.lemmatize(text_clean)
-				text_lemma = tweet_cv.transform([text_lem]).toarray()
+				text1 = cleaner(input_text) ###passing the text through the 'cleaner' function
+				text_lemma = tweet_cv.transform([text1]).toarray()
 
 				if model_choice == 'Linear SVC':
 					predictor = load_prediction_models("LinearSVC.pkl")
 					prediction = predictor.predict(text_lemma)
                     # st.write(prediction)
 				elif model_choice == 'Multinomial NB':
-					predictor = load_prediction_models("MultinomialNB2.pkl")
+					predictor = load_prediction_models("MultinomialNB.pkl")
 					prediction = predictor.predict(text_lemma)
 					st.write(prediction)
 				elif model_choice == 'Logistic Regession':
