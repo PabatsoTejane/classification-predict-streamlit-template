@@ -34,7 +34,7 @@ from nltk.corpus import stopwords, wordnet
 import string
 import urllib
 from nlppreprocess import NLP
-import en_core_web_sm
+#import en_core_web_sm
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
