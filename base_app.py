@@ -251,10 +251,10 @@ def main():
 				#text_lemma = tweet_cv.transform([text_lem]).toarray()
 				st.text("Original test ::\n{}".format(input_text))
 				text1 = cleaner(input_text) ###passing the text through the 'cleaner' function
-				text_lemma = tweet_cv.transform([text1]).toarray()
+				text_lemma = text1 # tweet_cv.transform([text1]).toarray()
 
 				if model_choice == 'Linear SVC':
-					predictor = load_prediction_models("LinearSVC.pkl")
+					predictor = load_prediction_models("LinearSVC2.pkl")
 					prediction = predictor.predict(text_lemma)
                     # st.write(prediction)
 				elif model_choice == 'Multinomial NB':
