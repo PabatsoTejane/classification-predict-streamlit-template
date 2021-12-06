@@ -22,7 +22,6 @@
 
 """
 # Streamlit dependencies
-from nltk import text
 import streamlit as st
 import joblib,os
 
@@ -102,7 +101,7 @@ def cleaner(tweet):
     return tweet.lstrip(" ")
 
 def lemmatizer(df):
-    df["length"] = df["message"].str.len()
+    #df["length"] = df["message"].str.len()
     df["tokenized"] = df["message"].apply(word_tokenize)
     df["parts-of-speech"] = df["tokenized"].apply(nltk.tag.pos_tag)
     
@@ -211,27 +210,27 @@ def main():
 				st.text("Original test ::\n{}".format(input_text))
 				text_clean = cleaner(input_text) #passing the text through the 'cleaner' function
 				text_lemma = lemmatizer(text_clean) #lemmatizing text
-				vtext = tweet_cv.transform([text_lemma]).toarray()
+				
 
 				if model_choice == 'Linear SVC':
 					predictor = load_prediction_models("LinearSVC.pkl")
-					prediction = predictor.predict(vtext)
+					prediction = predictor.predict(text_lemma)
                     # st.write(prediction)
 				elif model_choice == 'Multinomial NB':
 					predictor = load_prediction_models("MultinomialNB.pkl")
-					prediction = predictor.predict(vtext)
+					prediction = predictor.predict(text_lemma)
                     # st.write(prediction)
 				elif model_choice == 'Logistic Regession':
 					predictor = load_prediction_models("LogisticRegression.pkl")
-					prediction = predictor.predict(vtext)
+					prediction = predictor.predict(text_lemma)
                     # st.write(prediction)
 				elif model_choice == 'K-Neighbours':
 					predictor = load_prediction_models("KNeighbours.pkl")
-					prediction = predictor.predict(vtext)
+					prediction = predictor.predict(text_lemma)
 					# st.write(prediction)
 				elif model_choice == 'SGD Classifier':
 					predictor = load_prediction_models("SGDClassifier.pkl")
-					prediction = predictor.predict(vtext)
+					prediction = predictor.predict(text_lemma)
 					# st.write(prediction)
 				final_result = get_keys(prediction,prediction_labels)
 				st.success("Tweet Categorized as:: {}".format(final_result))
