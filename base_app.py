@@ -265,20 +265,20 @@ def main():
 					#prediction = predictor.predict(text_lemma)
 					#st.write(prediction)
 				if model_choice == 'Logistic Regession':
-					predictor = load_prediction_models("LogisticRegression.pkl")
+					predictor = load_prediction_models("LogisticRegression2.pkl")
 					prediction = predictor.predict(text_lemma)
                     # st.write(prediction)
 				if model_choice == 'K-Neighbours':
-					predictor = load_prediction_models("KNeighbours.pkl")
+					predictor = load_prediction_models("KNeighbours2.pkl")
 					prediction = predictor.predict(text_lemma)
 					# st.write(prediction)
 				if model_choice == 'SGD Classifier':
-					predictor = load_prediction_models("SGDClassifier.pkl")
+					predictor = load_prediction_models("SGDClassifier2.pkl")
 					prediction = predictor.predict(text_lemma)
 					# st.write(prediction)
 					#prediction_labels = {'Negative':-1,'Neutral':0,'Positive':1,'News':2}
 					#final_result = get_keys(prediction,prediction_labels)
-					st.success("Tweet Categorized as: {}".format(prediction))
+				st.success("Tweet Categorized as: {}".format(prediction))
 				#st.success("Text Categorized as: {}".format(prediction))
 
 			#if st.button("Classify"):
