@@ -212,7 +212,7 @@ def main():
 				text_clean = cleaner(input_text) #passing the text through the 'cleaner' function
 				lemma = WordNetLemmatizer()
 				text_lemma = lemma.lemmatize(text_clean)
-				text_in = tweet_cv.transform([text_lemma]).toarray()
+				#text_in = tweet_cv.transform([text_lemma]).toarray()
 
 				if model_choice == 'Linear SVC':
 					predictor = load_prediction_models("LinearSVC.pkl")
@@ -234,9 +234,9 @@ def main():
 					predictor = load_prediction_models("SGDClassifier.pkl")
 					prediction = predictor.predict(text_lemma)
 					# st.write(prediction)
-					prediction_labels = {'Negative':-1,'Neutral':0,'Positive':1,'News':2}
-					final_result = get_keys(prediction,prediction_labels)
-					st.success("Tweet Categorized as: {}".format(final_result))
+					#prediction_labels = {'Negative':-1,'Neutral':0,'Positive':1,'News':2}
+					#final_result = get_keys(prediction,prediction_labels)
+					st.success("Tweet Categorized as: {}".format(prediction))
 				#st.success("Text Categorized as: {}".format(prediction))
 
 			#if st.button("Classify"):
