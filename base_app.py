@@ -201,7 +201,7 @@ def main():
         # Getting the predictions
 		def get_keys(val,my_dict):
 			for key,value in my_dict.items():
-				if val == value.all():
+				if val == value:
 					return key
 			
 		
@@ -246,13 +246,13 @@ def main():
 					predictor = load_prediction_models("KNeighbours.pkl")
 					prediction = predictor.predict(X)
 
-				if model_choice == 'SGD Classifier':
+				elif model_choice == 'SGD Classifier':
 					predictor = load_prediction_models("SGDClassifier.pkl")
 					prediction = predictor.predict(X)
-
-				prediction_labels = {'Anti':-1,'Neutral':0,'Pro':1,'News':2}
-				final_result = get_keys(prediction,prediction_labels)
-				st.success("Tweet Categorized as: {}".format(final_result))
+					st.success("Tweet Categorized as: {}".format(prediction))
+				#prediction_labels = {'Anti':-1,'Neutral':0,'Pro':1,'News':2}
+				#final_result = get_keys(prediction,prediction_labels)
+				#st.success("Tweet Categorized as: {}".format(prediction))
 				
 
 			#if st.button("Classify"):
