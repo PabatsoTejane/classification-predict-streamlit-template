@@ -217,7 +217,7 @@ def main():
 				text_clean = cleaner(input_text) #passing the text through the 'cleaner' function
 				lemma = WordNetLemmatizer()
 				text_lem = lemma.lemmatize(text_clean)
-				text_lemma = tweet_cv.transform([text_lem]).toarray()
+				text_lemma = tweet_cv.transform([text_lem])
 				#st.text("Original test ::\n{}".format(input_text))
 				#text1 = cleaner(input_text) ###passing the text through the 'cleaner' function
 				#text_lemma = tweet_cv.transform([text1]).toarray()
