@@ -163,7 +163,7 @@ def main():
 		st.markdown(" * **Collen Bothma** : Programmer ")
 
 		st.subheader("Project Problem Statement")
-		st.markdown("Our client **Quizziczl Pictures** is a film production company that produced the film **Back To Eden** ")
+		st.markdown("Our client  **Quizzical Pictures**  is a film production company that produced the film **Back To Eden**. ")
 		st.markdown("Back to Eden is a film about a fictional eutopia, the film depicts what life would be like in a world where society took climate change seriously")
 
 	# Building the "EDA" page
