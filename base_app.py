@@ -193,7 +193,7 @@ def main():
 			st.write(tweets[['sentiment', 'message']]) # will write the cleaned df to the page
 
 	if selection == 'Prediction':
-		st.subheader('Classify your tweet using our M achine Learning Models')
+		st.subheader('Classify your tweets using our machine learning models')
 		data_source = ['Select option', 'Data Frame'] # differentiating between a single text and a dataset input
 		source_selection = st.selectbox('What to classify?', data_source)
 
