@@ -201,7 +201,7 @@ def main():
         # Getting the predictions
 		def get_keys(val,my_dict):
 			for key,value in my_dict.items():
-				if val == value:
+				if val == value.all():
 					return key
 			
 		
