@@ -190,7 +190,7 @@ def main():
 
 	if selection == 'Prediction':
 		st.info('Classify your tweet here using the ML Models below')
-		data_source = ['Select option', 'Single text'] ## differentiating between a single text and a dataset inpit
+		data_source = ['Select option', 'Data Frame'] ## differentiating between a single text and a dataset inpit
 		source_selection = st.selectbox('What to classify?', data_source)
 
         # Load Our Models
