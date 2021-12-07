@@ -176,7 +176,7 @@ def main():
 		st.markdown("The table  below shows the counts of the most popular hashtags")
 		st.image('images//frequent.png')
 		st.markdown("The graph below shows the boxplot of the number of words per tweet")
-		st.image('images//boxplot.png', width=100)
+		st.image('images//boxplot.png', width=1000)
 
 	# Building the "Information" page
 	if selection == " Additional Information":
