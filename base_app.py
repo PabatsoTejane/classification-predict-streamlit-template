@@ -161,12 +161,11 @@ def main():
 		st.markdown(" * **Olefile Ramoitheki** : Public relations ")
 		st.markdown(" * **Nqobile Ncube** : Project manager")
 		st.markdown(" * **Collen Bothma** : Programmer ")
-
+	
 		st.subheader("Project Problem Statement")
 		st.markdown("Our client  **Quizzical Pictures (PTY) Ltd.**  is a film production company that produced the film **Back To Eden**. Back to Eden is a film about a fictional eutopia, the film depicts what life would be like in a world where society took climate change seriously.")
-		st.markdown("Data Dot Inc. was tasked to develop an app that will enable Quizzical Pictures to identify their target market from a customer tweet database.")
-		st.markdown("The assumptions made were that the poteintial viewers are pro climate change and that their tweet revealed this sentiment.")
-
+		st.markdown("Data Dot Inc. was tasked to develop an app that will enable Quizzical Pictures to identify their target market from a customer tweet database. The assumptions made were that the poteintial viewers are pro climate change and that their tweets revealed this sentiment.")
+		
 	# Building the "EDA" page
 	if selection == "Exploring The Data":
 		st.subheader("Exploratory data analysis")
