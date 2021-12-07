@@ -208,13 +208,13 @@ def main():
 		if source_selection == 'Data Frame':
             ### SINGLE TWEET CLASSIFICATION ###
 			st.subheader('DataFrame tweet classification')
-			ml_models = ["Linear SVC","Original lr","Multinomial NB","Logistic Regression","K-Neighbours","SGD classifier"]
-			model_choice = st.selectbox("Choose ML Model",ml_models)
 			text_input = st.file_uploader("Choose a CSV file", type="csv")
 			if text_input is not None:
 				text_input = pd.read_csv(text_input)
-			
 			uploaded_dataset = st.checkbox('See uploaded dataset')
+
+			ml_models = ["Linear SVC","Original lr","Multinomial NB","Logistic Regression","K-Neighbours","SGD classifier"]
+			model_choice = st.selectbox("Choose ML Model",ml_models)
 			if uploaded_dataset:
 				st.dataframe(text_input.head(10))
 			
@@ -236,12 +236,12 @@ def main():
 				if model_choice == 'Original lr':
 					predictor = joblib.load(open(os.path.join("resources/Logistic_regression.pkl"),"rb"))
 					prediction = predictor.predict(X)
-				#elif model_choice == 'Multinomial NB':
-					#predictor = load_prediction_models("MultinomialNB2.pkl")
-					#prediction = predictor.predict(text_lemma)
+				if model_choice == 'Multinomial NB':
+					predictor = load_prediction_models("MultinomialNB2.pkl")
+					prediction = predictor.predict(X)
 					#st.write(prediction)
 				if model_choice == 'Logistic Regession':
-					predictor = load_prediction_models("LogisticRegression2.pkl")
+					predictor = load_prediction_models("LogisticRegression.pkl")
 					prediction = predictor.predict(X)
                     # st.write(prediction)
 				if model_choice == 'K-Neighbours':
