@@ -233,30 +233,27 @@ def main():
 				if model_choice == 'Linear SVC':
 					predictor = joblib.load(open(os.path.join("LinearSVC.pkl"),"rb"))
 					prediction = predictor.predict(X)
-                    # st.write(prediction)
-				if model_choice == 'Original lr':
-					predictor = joblib.load(open(os.path.join("resources/Logistic_regression.pkl"),"rb"))
-					prediction = predictor.predict(X)
+
 				if model_choice == 'Multinomial NB':
 					predictor = load_prediction_models("MultinomialNB.pkl")
 					prediction = predictor.predict(X)
-					#st.write(prediction)
+					
 				if model_choice == 'Logistic Regession':
 					predictor = load_prediction_models("LogisticRegression.pkl")
 					prediction = predictor.predict(X)
-                    # st.write(prediction)
+            
 				if model_choice == 'K-Neighbours':
 					predictor = load_prediction_models("KNeighbours.pkl")
 					prediction = predictor.predict(X)
-					# st.write(prediction)
+
 				if model_choice == 'SGD Classifier':
 					predictor = load_prediction_models("SGDClassifier.pkl")
 					prediction = predictor.predict(X)
-					# st.write(prediction)
-					#prediction_labels = {'Negative':-1,'Neutral':0,'Positive':1,'News':2}
-					#final_result = get_keys(prediction,prediction_labels)
-				st.success("Tweet Categorized as: {}".format(prediction))
-				#st.success("Text Categorized as: {}".format(prediction))
+
+					prediction_labels = {'Anti':-1,'Neutral':0,'Pro':1,'News':2}
+					final_result = get_keys(prediction,prediction_labels)
+				st.success("Tweet Categorized as: {}".format(final_result))
+				
 
 			#if st.button("Classify"):
 			# Transforming user input with vectorizer
