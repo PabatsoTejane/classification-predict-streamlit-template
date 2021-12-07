@@ -149,12 +149,12 @@ def main():
 	st.sidebar.markdown('    ')
 	# Creating sidebar with selection box 
 	# you can create multiple pages this way
-	options = ["Summary", "EDA", "Prediction", "Information"]
+	options = ["Project Summary", "Exploring The Data", "Prediction", " Additional Information"]
 	selection = st.sidebar.selectbox("Choose option", options)
 	
 
 	# Building the "Summary" page
-	if selection == "Summary":
+	if selection == "Project Summary":
 		st.subheader("Team Members")
 		st.markdown(" * **Euphrasia Mampuru** : Scrum master ")
 		st.markdown(" * **Pabatso Tejane** : App developer ")
@@ -163,11 +163,13 @@ def main():
 		st.markdown(" * **Collen Bothma** : Programmer ")
 
 		st.subheader("Project Problem Statement")
-		st.markdown("Our client  **Quizzical Pictures**  is a film production company that produced the film **Back To Eden**. ")
-		st.markdown("Back to Eden is a film about a fictional eutopia, the film depicts what life would be like in a world where society took climate change seriously")
+		st.markdown("Our client  **Quizzical Pictures (PTY) Ltd.**  is a film production company that produced the film **Back To Eden**. ")
+		st.markdown("Back to Eden is a film about a fictional eutopia, the film depicts what life would be like in a world where society took climate change seriously.")
+		st.markdown("Data Dot Inc. was tasked to develop an app that will enable Quizzical Pictures to identify their target market from a customer tweet database.")
+		st.markdown("The assumptions made were that the poteintial viewers are pro climate change and that their tweet revealed this sentiment.")
 
 	# Building the "EDA" page
-	if selection == "EDA":
+	if selection == "Exploring The Data":
 		st.subheader("Exploratory data analysis")
 		st.markdown("The graph below shows the distribution of the four possible sentiments which are represented in the raw data.")
 		st.image('images//TwitterValue.PNG')
@@ -179,7 +181,7 @@ def main():
 		st.image('images//boxplot.png')
 
 	# Building the "Information" page
-	if selection == "Information":
+	if selection == " Additional Information":
 		st.info("General Information")
 		# You can read a markdown file from supporting resources folder
 		st.markdown("Some information here")
