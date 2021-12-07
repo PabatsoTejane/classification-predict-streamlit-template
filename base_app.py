@@ -156,11 +156,11 @@ def main():
 	# Building the "Summary" page
 	if selection == "Summary":
 		st.subheader("Team Members")
-		st.markdown(" * **Pabatso Tejane** ")
-		st.markdown(" * **Olefile Ramoitheki** ")
-		st.markdown(" * **Euphrasia Mampuru** ")
-		st.markdown(" * **Nqobile Ncube** ")
-		st.markdown(" * **Collen Bothma** ")
+		st.markdown(" * **Euphrasia Mampuru** : Scrum master ")
+		st.markdown(" * **Pabatso Tejane** : App developer ")
+		st.markdown(" * **Olefile Ramoitheki** : Public relations ")
+		st.markdown(" * **Nqobile Ncube** : Project manager")
+		st.markdown(" * **Collen Bothma** : Programmer ")
 
 		st.subheader("Project Problem Statement")
 		st.info("The client has tasked the team with creating a tweet classifier: that will assist in identifying potential customers for their eco friendly products and services")
