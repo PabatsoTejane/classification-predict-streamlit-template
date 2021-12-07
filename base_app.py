@@ -245,9 +245,7 @@ def main():
 					predictor = load_prediction_models("models//KNeighbours.pkl")
 					prediction = predictor.predict(X)
 
-				st.success("Tweet Categorized as: {}".format(prediction))
-
-				st.write(print(type(prediction)))
+				st.success(prediction)
 
 				#prediction_labels = {'Anti':-1,'Neutral':0,'Pro':1,'News':2}
 				#final_result = get_keys(prediction,prediction_labels)
