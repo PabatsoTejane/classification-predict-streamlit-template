@@ -75,7 +75,6 @@ def get_data(filename):
 
 	return data
 
-data = pd.read_csv('resources/train.csv')
 # Load your raw data
 raw_tweets = get_data("train.csv")
 tweets = get_data("train.csv")
@@ -140,7 +139,6 @@ test_data = lemmatizer(test_data)
 # The main function where we will build the actual app
 def main():
 	#Tweet Classifier App with Streamlit 
-
 	# Creates a main title and subheader on your page -
 	# these are static across all pages
 	st.title("Climate Change Belief Tweet Classifier")
@@ -149,6 +147,7 @@ def main():
 	# you can create multiple pages this way
 	options = ["Summary", "EDA", "Prediction", "Information"]
 	selection = st.sidebar.selectbox("Choose option", options)
+	st.sidebar.subheader('team logo')
 
 	# Building the "Summary" page
 	if selection == "Summary":
@@ -174,8 +173,6 @@ def main():
 		st.markdown("The graph below shows the boxplot of the number of words per tweet")
 		st.image('images//boxplot.png')
 
-
-			
 	# Building the "Information" page
 	if selection == "Information":
 		st.info("General Information")
@@ -184,13 +181,13 @@ def main():
 
 		st.subheader("Raw Twitter data and label")
 		if st.checkbox('Show raw data'): # data is hidden if box is unchecked
-			st.write(raw_tweets[['sentiment', 'message']]) # will write the df to the page
+			st.write(raw_tweets[['sentiment', 'message']]) # will write the raw df to the page
 		if st.checkbox('Show cleaned data'): # data is hidden if box is unchecked
-			st.write(tweets[['sentiment', 'message']]) # will write the df to the page
+			st.write(tweets[['sentiment', 'message']]) # will write the cleaned df to the page
 
 	if selection == 'Prediction':
 		st.info('Classify your tweet here using the ML Models below')
-		data_source = ['Select option', 'Data Frame'] ## differentiating between a single text and a dataset inpit
+		data_source = ['Select option', 'Data Frame'] # differentiating between a single text and a dataset input
 		source_selection = st.selectbox('What to classify?', data_source)
 
         # Load Our Models
@@ -206,7 +203,7 @@ def main():
 			
 		
 		if source_selection == 'Data Frame':
-            ### SINGLE TWEET CLASSIFICATION ###
+            ### DATA FRAME TWEET CLASSIFICATION ###
 			st.subheader('DataFrame tweet classification')
 			text_input = st.file_uploader("Choose a CSV file", type="csv")
 			if text_input is not None:
@@ -247,20 +244,6 @@ def main():
 				#final_result = get_keys(prediction,prediction_labels)
 				#st.success("Tweet Categorized as: {}".format(prediction))
 				
-
-			#if st.button("Classify"):
-			# Transforming user input with vectorizer
-			#vect_text = tweet_cv.transform([tweet_text]).toarray()
-			# Load your .pkl file with the model of your choice + make predictions
-			# Try loading in multiple models to give the user a choice
-			#predictor = joblib.load(open(os.path.join("resources/Logistic_regression.pkl"),"rb"))
-			#prediction = predictor.predict(vect_text)
-
-			# When model has successfully run, will print prediction
-			# You can use a dictionary or similar structure to make this output
-			# more human interpretable.
-			#st.success("Text Categorized as: {}".format(prediction))
-
 # Required to let Streamlit instantiate our web app.  
 if __name__ == '__main__':
 	main()
