@@ -182,11 +182,9 @@ def main():
 
 	# Building the "Information" page
 	if selection == " Additional Information":
-		st.info("General Information")
+		st.subheader("General Information")
 		# You can read a markdown file from supporting resources folder
-		st.markdown("Some information here")
-
-		st.subheader("Raw Twitter data and label")
+		st.markdown("Raw twitter data and labels")
 		if st.checkbox('Show raw data'): # data is hidden if box is unchecked
 			st.write(raw_tweets[['sentiment', 'message']]) # will write the raw df to the page
 		if st.checkbox('Show cleaned data'): # data is hidden if box is unchecked
