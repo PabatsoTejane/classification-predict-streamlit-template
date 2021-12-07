@@ -163,7 +163,7 @@ def main():
 		st.markdown(" * **Collen Bothma** : Programmer ")
 
 		st.subheader("Project Problem Statement")
-		st.markdown("Back to Eden:A film about a fictional country that depicts what life would be like we took climate change seriously, started using alternative sources of energy,electric cars etc and fauna and flora started to flourish")
+		st.markdown("Back to Eden is a film about a fictional eutopia, the film depicts what life would be like in a world where society took climate change seriously")
 
 	# Building the "EDA" page
 	if selection == "EDA":
