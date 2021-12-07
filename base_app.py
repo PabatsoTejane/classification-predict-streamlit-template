@@ -223,7 +223,7 @@ def main():
 				#text_lemma = tweet_cv.transform([text1]).toarray()
 
 				if model_choice == 'Linear SVC':
-					predictor = joblib.load(open(os.path.join("LinearSVC2.pkl"),"rb"))
+					predictor = joblib.load(open(os.path.join("LinearSVC.pkl"),"rb"))
 					prediction = predictor.predict(text_lemma)
                     # st.write(prediction)
 				if model_choice == 'Original lr':
