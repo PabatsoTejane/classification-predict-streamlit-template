@@ -245,7 +245,12 @@ def main():
 					predictor = load_prediction_models("models//KNeighbours.pkl")
 					prediction = predictor.predict(X)
 
-				st.success(prediction)
+				st.success("Tweet Categorized as: {}".format(prediction))
+				Pro = prediction.count(1)
+				Anti = prediction.count(-1)
+				News = prediction.count(2)
+				Neutral = prediction.count(0)
+				st.empty(Pro)
 
 				#prediction_labels = {'Anti':-1,'Neutral':0,'Pro':1,'News':2}
 				#final_result = get_keys(prediction,prediction_labels)
