@@ -127,6 +127,7 @@ def lemmatizer(df):
     
     return df
 
+
 # Application of the function to clean the tweets
 tweets['message'] = tweets['message'].apply(cleaner)
 test_data['message'] = test_data['message'].apply(cleaner)
@@ -204,42 +205,52 @@ def main():
 					return key
 			
 		
-		if source_selection == 'Single text':
+		if source_selection == 'Data Frame':
             ### SINGLE TWEET CLASSIFICATION ###
-			st.subheader('Single tweet classification')
-			input_text = st.text_area('Enter Text (max. 140 characters):') ##user entering a single text to classify and predict
+			st.subheader('DataFrame tweet classification')
 			ml_models = ["Linear SVC","Original lr","Multinomial NB","Logistic Regression","K-Neighbours","SGD classifier"]
 			model_choice = st.selectbox("Choose ML Model",ml_models)
-		
+			text_input = st.file_uploader("Choose a CSV file", type="csv")
+			if text_input is not None:
+				text_input = pd.read_csv(text_input)
+			
+			uploaded_dataset = st.checkbox('See uploaded dataset')
+			if uploaded_dataset:
+				st.dataframe(text_input.head(10))
 			
 			if st.button('Classify'):
-				st.text("Original test ::\n{}".format(input_text))
-				text_clean = cleaner(input_text) #passing the text through the 'cleaner' function
-				lemma = WordNetLemmatizer()
-				text_lemma = lemma.lemmatize(text_clean)
+				#st.text("Original test ::\n{}".format(input_text))
+				#text_clean = cleaner(input_text) #passing the text through the 'cleaner' function
+				#lemma = WordNetLemmatizer()
+				#text_lemma = lemma.lemmatize(text_clean)
+
+				text_input['message'] = text_input['message'].apply(cleaner)
+				text_input = lemmatizer(tweets)
+
+				X = text_input['message']
 
 				if model_choice == 'Linear SVC':
 					predictor = joblib.load(open(os.path.join("LinearSVC.pkl"),"rb"))
-					prediction = predictor.predict(text_lemma)
+					prediction = predictor.predict(X)
                     # st.write(prediction)
 				if model_choice == 'Original lr':
 					predictor = joblib.load(open(os.path.join("resources/Logistic_regression.pkl"),"rb"))
-					prediction = predictor.predict(text_lemma)
+					prediction = predictor.predict(X)
 				#elif model_choice == 'Multinomial NB':
 					#predictor = load_prediction_models("MultinomialNB2.pkl")
 					#prediction = predictor.predict(text_lemma)
 					#st.write(prediction)
 				if model_choice == 'Logistic Regession':
 					predictor = load_prediction_models("LogisticRegression2.pkl")
-					prediction = predictor.predict(text_lemma)
+					prediction = predictor.predict(X)
                     # st.write(prediction)
 				if model_choice == 'K-Neighbours':
 					predictor = load_prediction_models("KNeighbours2.pkl")
-					prediction = predictor.predict(text_lemma)
+					prediction = predictor.predict(X)
 					# st.write(prediction)
 				if model_choice == 'SGD Classifier':
 					predictor = load_prediction_models("SGDClassifier2.pkl")
-					prediction = predictor.predict(text_lemma)
+					prediction = predictor.predict(X)
 					# st.write(prediction)
 					#prediction_labels = {'Negative':-1,'Neutral':0,'Positive':1,'News':2}
 					#final_result = get_keys(prediction,prediction_labels)
