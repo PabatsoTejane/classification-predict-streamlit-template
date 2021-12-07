@@ -146,7 +146,7 @@ def main():
 	st.sidebar.subheader('About Data Dot Inc.')
 	st.sidebar.markdown('A consultancy firm that uses the data science process to solve your everyday marketing problem')
 	#st.sidebar.image('images//DataDotIncLogo.png')
-	st.markdown('    ')
+	st.sidebar.markdown('    ')
 	# Creating sidebar with selection box 
 	# you can create multiple pages this way
 	options = ["Summary", "EDA", "Prediction", "Information"]
