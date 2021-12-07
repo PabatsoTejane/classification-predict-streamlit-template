@@ -168,7 +168,7 @@ def main():
 		
 	# Building the "EDA" page
 	if selection == "Exploring The Data":
-		st.subheader("Exploratory data analysis")
+		st.subheader("Exploratory data analysis Visuals")
 		st.markdown("The distribution of the four possible sentiments")
 		st.image('images//TwitterValue.PNG')
 		st.markdown("   ")
