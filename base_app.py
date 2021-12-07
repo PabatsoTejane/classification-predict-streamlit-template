@@ -204,9 +204,9 @@ def main():
         # Getting the predictions
 		def get_keys(val,my_dict):
 			for key,value in my_dict.items():
-				my_dict[key] == np.asarray(val)
-				return key
-					 
+				if val.all() == value:
+					return key
+			
 		
 		if source_selection == 'Data Frame':
             ### DATA FRAME TWEET CLASSIFICATION ###
@@ -245,12 +245,12 @@ def main():
 					predictor = load_prediction_models("models//KNeighbours.pkl")
 					prediction = predictor.predict(X)
 
+				st.success("Tweet Categorized as: {}".format(prediction))
+				
+
+				#prediction_labels = {'Anti':-1,'Neutral':0,'Pro':1,'News':2}
+				#final_result = get_keys(prediction,prediction_labels)
 				#st.success("Tweet Categorized as: {}".format(prediction))
-
-
-				prediction_labels = {'Anti':-1,'Neutral':0,'Pro':1,'News':2}
-				final_result = get_keys(prediction,prediction_labels)
-				st.success("Tweet Categorized as: {}".format(final_result))
 				
 # Required to let Streamlit instantiate our web app.  
 if __name__ == '__main__':
