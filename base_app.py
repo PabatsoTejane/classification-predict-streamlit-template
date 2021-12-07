@@ -145,7 +145,7 @@ def main():
 	st.title("Climate Change Belief Classifier")
 	st.sidebar.image('images//DataDot.png')
 	st.sidebar.subheader('About Data Dot Inc.')
-	st.sidebar.markdown('A consultancy firm that uses data science processes to solve your everyday marketing problems')
+	st.sidebar.markdown('Data Dot Inc. is a consultancy firm that uses data science processes to solve your everyday marketing problems')
 	st.sidebar.markdown('    ')
 	# Creating sidebar with selection box 
 	# you can create multiple pages this way
