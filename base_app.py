@@ -216,11 +216,7 @@ def main():
 				st.text("Original test ::\n{}".format(input_text))
 				text_clean = cleaner(input_text) #passing the text through the 'cleaner' function
 				lemma = WordNetLemmatizer()
-				text_lem = lemma.lemmatize(text_clean)
-				text_lemma = tweet_cv.transform([text_lem])
-				#st.text("Original test ::\n{}".format(input_text))
-				#text1 = cleaner(input_text) ###passing the text through the 'cleaner' function
-				#text_lemma = tweet_cv.transform([text1]).toarray()
+				text_lemma = lemma.lemmatize(text_clean)
 
 				if model_choice == 'Linear SVC':
 					predictor = joblib.load(open(os.path.join("LinearSVC.pkl"),"rb"))
