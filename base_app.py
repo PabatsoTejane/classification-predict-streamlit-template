@@ -208,7 +208,7 @@ def main():
             ### SINGLE TWEET CLASSIFICATION ###
 			st.subheader('Single tweet classification')
 			input_text = st.text_area('Enter Text (max. 140 characters):') ##user entering a single text to classify and predict
-			ml_models = ["Linear SVC","Multinomial NB","Logistic Regression","K-Neighbours","SGD classifier"]
+			ml_models = ["Linear SVC","Original lr","Multinomial NB","Logistic Regression","K-Neighbours","SGD classifier"]
 			model_choice = st.selectbox("Choose ML Model",ml_models)
 		
 			
@@ -226,7 +226,7 @@ def main():
 					predictor = joblib.load(open(os.path.join("LinearSVC2.pkl"),"rb"))
 					prediction = predictor.predict(text_lemma)
                     # st.write(prediction)
-				if model_choice == 'Multinomial NB':
+				if model_choice == 'Original lr':
 					predictor = joblib.load(open(os.path.join("resources/Logistic_regression.pkl"),"rb"))
 					prediction = predictor.predict(text_lemma)
 				#elif model_choice == 'Multinomial NB':
