@@ -246,6 +246,9 @@ def main():
 					prediction = predictor.predict(X)
 
 				st.success("Tweet Categorized as: {}".format(prediction))
+
+				st.write(print(type(prediction)))
+
 				#prediction_labels = {'Anti':-1,'Neutral':0,'Pro':1,'News':2}
 				#final_result = get_keys(prediction,prediction_labels)
 				#st.success("Tweet Categorized as: {}".format(prediction))
