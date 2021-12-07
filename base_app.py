@@ -169,14 +169,14 @@ def main():
 	# Building the "EDA" page
 	if selection == "Exploring The Data":
 		st.subheader("Exploratory data analysis")
-		st.markdown("The graph below shows the distribution of the four possible sentiments which are represented in the raw data.")
-		st.image('images//TwitterValue.PNG')
-		st.markdown("The graph below shows the buzzwords used in the tweets.")
-		st.image('images//wordcloud.png')
-		st.markdown("The table  below shows the counts of the most popular hashtags")
-		st.image('images//frequent.png')
-		st.markdown("The graph below shows the boxplot of the number of words per tweet")
-		st.image('images//boxplot.png', width=1000)
+		#st.markdown("The graph below shows the distribution of the four possible sentiments which are represented in the raw data.")
+		st.image('images//TwitterValue.PNG', caption="The distribution of the four possible sentiments")
+		#st.markdown("The graph below shows the buzzwords used in the tweets.")
+		st.image('images//wordcloud.png', caption="Buzzwords used in the tweets")
+		#st.markdown("The table  below shows the counts of the most popular hashtags")
+		st.image('images//frequent.png', caption="The most popular hashtags")
+		#st.markdown("The graph below shows the boxplot of the number of words per tweet")
+		#st.image('images//boxplot.png', width=1000)
 
 	# Building the "Information" page
 	if selection == " Additional Information":
