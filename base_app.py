@@ -142,7 +142,7 @@ def main():
 	# Creates a main title and subheader on your page -
 	# these are static across all pages
 	st.image('images//DataDot.png')
-	st.title("Climate Change Belief Tweet Classifier")
+	st.title("Climate Change Belief Classifier")
 	st.sidebar.image('images//DataDot.png')
 	st.sidebar.subheader('About Data Dot Inc.')
 	st.sidebar.markdown('A consultancy firm that uses the data science process to solve your everyday marketing problem')
