@@ -142,9 +142,10 @@ def main():
 	# Creates a main title and subheader on your page -
 	# these are static across all pages
 	st.title("Climate Change Belief Tweet Classifier")
-	st.image('images//DataDotIncLogo.png')
+	#st.image('images//DataDotIncLogo.png')
 	st.sidebar.subheader('DATA DOT INC.')
-	st.sidebar.image('images//DataDotIncLogo.png')
+	#st.sidebar.image('images//DataDotIncLogo.png')
+	
 	# Creating sidebar with selection box 
 	# you can create multiple pages this way
 	options = ["Summary", "EDA", "Prediction", "Information"]
