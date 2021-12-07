@@ -174,7 +174,7 @@ def main():
 		st.markdown("The graph below shows the buzzwords used in the tweets.")
 		st.image('images//wordcloud.png')
 		st.markdown("The table  below shows the counts of the most popular hashtags")
-		st.image('images//counts.png')
+		st.image('images//frequent.png')
 		st.markdown("The graph below shows the boxplot of the number of words per tweet")
 		st.image('images//boxplot.png')
 
