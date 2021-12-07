@@ -250,8 +250,8 @@ def main():
 					predictor = load_prediction_models("SGDClassifier.pkl")
 					prediction = predictor.predict(X)
 
-					prediction_labels = {'Anti':-1,'Neutral':0,'Pro':1,'News':2}
-					final_result = get_keys(prediction,prediction_labels)
+				prediction_labels = {'Anti':-1,'Neutral':0,'Pro':1,'News':2}
+				final_result = get_keys(prediction,prediction_labels)
 				st.success("Tweet Categorized as: {}".format(final_result))
 				
 
