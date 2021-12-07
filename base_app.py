@@ -246,10 +246,11 @@ def main():
 					predictor = load_prediction_models("KNeighbours.pkl")
 					prediction = predictor.predict(X)
 
-				elif model_choice == 'SGD Classifier':
+				if model_choice == 'SGD Classifier':
 					predictor = load_prediction_models("SGDClassifier.pkl")
 					prediction = predictor.predict(X)
-					st.success("Tweet Categorized as: {}".format(prediction))
+
+				st.success("Tweet Categorized as: {}".format(prediction))
 				#prediction_labels = {'Anti':-1,'Neutral':0,'Pro':1,'News':2}
 				#final_result = get_keys(prediction,prediction_labels)
 				#st.success("Tweet Categorized as: {}".format(prediction))
