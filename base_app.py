@@ -163,7 +163,7 @@ def main():
 		st.markdown(" * **Collen Bothma** : Programmer ")
 
 		st.subheader("Project Problem Statement")
-		st.info("The client has tasked the team with creating a tweet classifier: that will assist in identifying potential customers for their eco friendly products and services")
+		st.info("Back to Eden:A film about a fictional country that depicts what life would be like we took climate change seriously, started using alternative sources of energy,electric cars etc and fauna and flora started to flourish")
 
 	# Building the "EDA" page
 	if selection == "EDA":
