@@ -143,7 +143,8 @@ def main():
 	# these are static across all pages
 	st.title("Climate Change Belief Tweet Classifier")
 	st.sidebar.subheader('DATA DOT INC.')
-	# Creating sidebar with selection box -
+	st.sidebar.image('images//DataDotIncLogo.png')
+	# Creating sidebar with selection box 
 	# you can create multiple pages this way
 	options = ["Summary", "EDA", "Prediction", "Information"]
 	selection = st.sidebar.selectbox("Choose option", options)
