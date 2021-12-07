@@ -150,7 +150,7 @@ def main():
 	# Creating sidebar with selection box 
 	# you can create multiple pages this way
 	options = ["Project Summary", "Exploring The Data", "Prediction", " Additional Information"]
-	selection = st.sidebar.selectbox("Choose option", options)
+	selection = st.sidebar.selectbox("App Navigation : Choose option", options)
 	
 
 	# Building the "Summary" page
