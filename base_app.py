@@ -141,11 +141,11 @@ def main():
 	#Tweet Classifier App with Streamlit 
 	# Creates a main title and subheader on your page -
 	# these are static across all pages
-	st.title("Climate Change Belief Tweet Classifier")
 	st.image('images//DataDot.png')
+	st.title("Climate Change Belief Tweet Classifier")
+	st.sidebar.image('images//DataDot.png')
 	st.sidebar.subheader('About Data Dot Inc.')
 	st.sidebar.markdown('A consultancy firm that uses the data science process to solve your everyday marketing problem')
-	st.sidebar.image('images//DataDot.png')
 	st.sidebar.markdown('    ')
 	# Creating sidebar with selection box 
 	# you can create multiple pages this way
