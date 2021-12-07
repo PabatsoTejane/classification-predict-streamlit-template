@@ -76,9 +76,9 @@ def get_data(filename):
 	return data
 
 # Load your raw data
-raw_tweets = get_data("train.csv")
-tweets = get_data("train.csv")
-test_data = get_data("test_with_no_labels.csv")
+raw_tweets = get_data("data//train.csv")
+tweets = get_data("data//train.csv")
+test_data = get_data("data//test_with_no_labels.csv")
 
 #Data pre-processing functions
 
@@ -228,15 +228,15 @@ def main():
 				X = text_input['message']
 
 				if model_choice == 'Linear SVC':
-					predictor = joblib.load(open(os.path.join("LinearSVC.pkl"),"rb"))
+					predictor = joblib.load(open(os.path.join("models//LinearSVC.pkl"),"rb"))
 					prediction = predictor.predict(X)
 
 				if model_choice == 'Multinomial NB':
-					predictor = load_prediction_models("MultinomialNB.pkl")
+					predictor = load_prediction_models("models//MultinomialNB.pkl")
 					prediction = predictor.predict(X)
             
 				if model_choice == 'K-Neighbours':
-					predictor = load_prediction_models("KNeighbours.pkl")
+					predictor = load_prediction_models("models//KNeighbours.pkl")
 					prediction = predictor.predict(X)
 
 				st.success("Tweet Categorized as: {}".format(prediction))
