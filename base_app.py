@@ -204,8 +204,8 @@ def main():
         # Getting the predictions
 		def get_keys(val,my_dict):
 			for key,value in my_dict.items():
-				if my_dict[key] == np.asarray(val):
-					return key
+				my_dict[key] == np.asarray(val)
+				return key
 					 
 		
 		if source_selection == 'Data Frame':
