@@ -142,12 +142,12 @@ def main():
 	# Creates a main title and subheader on your page -
 	# these are static across all pages
 	st.title("Climate Change Belief Tweet Classifier")
-
+	st.sidebar.subheader('DATA DOT INC.')
 	# Creating sidebar with selection box -
 	# you can create multiple pages this way
 	options = ["Summary", "EDA", "Prediction", "Information"]
 	selection = st.sidebar.selectbox("Choose option", options)
-	st.sidebar.subheader('team logo')
+	
 
 	# Building the "Summary" page
 	if selection == "Summary":
