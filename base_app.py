@@ -216,7 +216,7 @@ def main():
 			if uploaded_dataset:
 				st.dataframe(text_input.head(10))
 			
-			ml_models = ["Linear SVC","Original lr","Multinomial NB","Logistic Regression","K-Neighbours","SGD classifier"]
+			ml_models = ["Linear SVC","Multinomial NB","K-Neighbours"]
 			model_choice = st.selectbox("Choose ML Model",ml_models)
 
 			if st.button('Classify'):
@@ -237,17 +237,9 @@ def main():
 				if model_choice == 'Multinomial NB':
 					predictor = load_prediction_models("MultinomialNB.pkl")
 					prediction = predictor.predict(X)
-					
-				if model_choice == 'Logistic Regession':
-					predictor = load_prediction_models("LogisticRegression.pkl")
-					prediction = predictor.predict(X)
             
 				if model_choice == 'K-Neighbours':
 					predictor = load_prediction_models("KNeighbours.pkl")
-					prediction = predictor.predict(X)
-
-				if model_choice == 'SGD Classifier':
-					predictor = load_prediction_models("SGDClassifier.pkl")
 					prediction = predictor.predict(X)
 
 				st.success("Tweet Categorized as: {}".format(prediction))
