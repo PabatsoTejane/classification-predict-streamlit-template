@@ -150,7 +150,7 @@ def main():
 	# Creating sidebar with selection box 
 	# you can create multiple pages this way
 	options = ["Project Summary", "Exploring The Data", "Prediction", " Additional Information"]
-	selection = st.sidebar.selectbox("App Navigation : Choose option", options)
+	selection = st.sidebar.selectbox("App Navigation options", options)
 	
 
 	# Building the "Summary" page
@@ -163,7 +163,7 @@ def main():
 		st.markdown(" * **Collen Bothma** : Programmer ")
 	
 		st.subheader("Project Problem Statement")
-		st.markdown("Our client  **Quizzical Pictures (PTY) Ltd.**  is a film production company that produced the film **Back To Eden**. Back to Eden is a film about a fictional eutopia, the film depicts what life would be like in a world where society took climate change seriously.")
+		st.markdown("Our client  **Quizzical Pictures (PTY) Ltd**  is a film production company that produced the film **Back To Eden**. Back to Eden is a film about a fictional eutopia, the film depicts what life would be like in a world where society took climate change seriously.")
 		st.markdown("Data Dot Inc. was tasked to develop an app that will enable Quizzical Pictures to identify their target market from a customer tweet database. The assumptions made were that the poteintial viewers are pro climate change and that their tweets revealed this sentiment.")
 		
 	# Building the "EDA" page
