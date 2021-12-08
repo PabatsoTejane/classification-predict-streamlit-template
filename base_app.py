@@ -151,6 +151,13 @@ def main():
 	# you can create multiple pages this way
 	options = ["Project Summary", "Exploring The Data", "Prediction", " Additional Information"]
 	selection = st.sidebar.selectbox("App Navigation options", options)
+	st.sidebar.markdown('    ')
+	st.sidebar.subheader('Contact us')
+	st.sidebar.markdown(' * **Website:** www.DataDot.co.za')
+	st.sidebar.markdown(' * **Tel:** 011 442 0000')
+	st.sidebar.markdown(' * **Twitter:** @DataDot')
+	st.sidebar.markdown(' * **LinkedIn:**www.linkedin.com/in/DataDot')
+
 	
 
 	# Building the "Summary" page
