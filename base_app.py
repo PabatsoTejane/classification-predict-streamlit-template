@@ -252,12 +252,12 @@ def main():
 					predictor = load_prediction_models("models//KNeighbours.pkl")
 					prediction = predictor.predict(X)
 
-				#st.success("Tweet Categorized as: {}".format(prediction))
+				st.success("Tweet Categorized as: {}".format(prediction))
 				
 
-				prediction_dict = {-1: 'Anti', 0: 'Neutral',1: 'Pro',2: 'News'}
+				#prediction_dict = {-1: 'Anti', 0: 'Neutral',1: 'Pro',2: 'News'}
 				#final_result = get_keys(prediction,prediction_labels)
-				st.success("Tweet Categorized as: {}".format(prediction_dict[prediction]))
+				#st.success("Tweet Categorized as: {}".format(prediction_dict[prediction]))
 				
 # Required to let Streamlit instantiate our web app.  
 if __name__ == '__main__':
