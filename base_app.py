@@ -260,7 +260,7 @@ def main():
 				prediction_dict = {-1: 'Anti', 0: 'Neutral',1: 'Pro',2: 'News'}
 				funt = lambda x: prediction_dict[x]
 				a = list(map(funt,prediction))
-				results = pd.DataFrame(a)
+				results = pd.DataFrame(a, index_col= 0)
 		
 				results["tweet_id"] = b
 				results.columns = ['Predicted_sentiment', 'Tweet_id']
