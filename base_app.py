@@ -255,7 +255,6 @@ def main():
 					prediction = predictor.predict(X)
 
 				#st.success("Tweet Categorized as: {}".format(prediction))
-				
 
 				prediction_dict = {-1: 'Anti', 0: 'Neutral',1: 'Pro',2: 'News'}
 				funt = lambda x: prediction_dict[x]
@@ -263,10 +262,8 @@ def main():
 				results = pd.DataFrame(a)
 		
 				results["tweet_id"] = b
-				results.columns = ['Predicted_sentiment', 'Tweet_id']
+				results.columns = ['Predicted_sentiment', 'Tweet_id'] #ranaming result dataframe columns
 				results.set_index('Tweet_id')
-
-				#final_result = get_keys(prediction,prediction_labels)
 				st.success(st.dataframe(results))
 
 				
