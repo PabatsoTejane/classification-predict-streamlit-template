@@ -268,7 +268,8 @@ def main():
 
 				st.markdown('**Single tweet sentiment**')
 				input_text = st.text_area('Enter Tweet ID:') 
-				st.write(results.loc[input_text])
+				if input_text is not None:
+					st.write(results.loc[input_text])
 
 				
 # Required to let Streamlit instantiate our web app.  
