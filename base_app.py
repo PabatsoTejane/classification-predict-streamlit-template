@@ -258,8 +258,9 @@ def main():
 				prediction_dict = {-1: 'Anti', 0: 'Neutral',1: 'Pro',2: 'News'}
 				funt = lambda x: prediction_dict[x]
 				a = list(map(funt,prediction))
+				results = pd.DataFrame(a)
 				#final_result = get_keys(prediction,prediction_labels)
-				st.success("Tweet Categorized as: {}".format(a))
+				st.success("Tweets Categorized as: {}".format(results))
 				
 # Required to let Streamlit instantiate our web app.  
 if __name__ == '__main__':
