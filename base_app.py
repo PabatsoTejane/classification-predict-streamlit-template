@@ -260,7 +260,7 @@ def main():
 				a = list(map(funt,prediction))
 				results = pd.DataFrame(a)
 				#final_result = get_keys(prediction,prediction_labels)
-				st.success(a)
+				st.success(results)
 				
 # Required to let Streamlit instantiate our web app.  
 if __name__ == '__main__':
