@@ -255,7 +255,7 @@ def main():
 				#st.success("Tweet Categorized as: {}".format(prediction))
 				
 
-				prediction_labels = {'Anti':-1,'Neutral':0,'Pro':1,'News':2}
+				prediction_labels = {-1: 'Anti', 0: 'Neutral',1: 'Pro',2: 'News'}
 				final_result = get_keys(prediction,prediction_labels)
 				st.success("Tweet Categorized as: {}".format(final_result))
 				
