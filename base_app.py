@@ -264,6 +264,7 @@ def main():
 		
 				results["tweet_id"] = b
 				results.columns = ['Predicted_sentiment', 'Tweet_id']
+				results.set_index('Tweet_id')
 
 				#final_result = get_keys(prediction,prediction_labels)
 				st.success(st.dataframe(results))
