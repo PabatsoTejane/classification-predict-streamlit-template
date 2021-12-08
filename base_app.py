@@ -274,11 +274,14 @@ def main():
 				model_choice = st.selectbox("Choose ML Model",ml_models)
 				
 				if st.button('Classify'):
-					df = pd.DataFrame(input_text)
-					df
-					df['message'] = df['message'].apply(cleaner)
-					df = lemmatizer(tweets)
-					X = text_input['message']
+					st.text("Original test ::\n{}".format(input_text))
+					text1 = cleaner(input_text) ###passing the text through the 'cleaner' function
+					X = tweet_cv.transform([text1]).toarray()
+					#df = pd.DataFrame(input_text)
+					#df['message'] = df['message'].apply(cleaner)
+					#df = lemmatizer(tweets)
+
+					#X = text_input['message']
 
 				if model_choice == 'Linear SVC':
 					predictor = joblib.load(open(os.path.join("models//LinearSVC.pkl"),"rb"))
