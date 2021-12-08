@@ -277,6 +277,7 @@ def main():
 					st.text("Original test ::\n{}".format(input_text))
 					text1 = cleaner(input_text) ###passing the text through the 'cleaner' function
 					X = tweet_cv.transform([text1]).toarray()
+
 					#df = pd.DataFrame(input_text)
 					#df['message'] = df['message'].apply(cleaner)
 					#df = lemmatizer(tweets)
@@ -295,7 +296,7 @@ def main():
 					predictor = load_prediction_models("models//KNeighbours.pkl")
 					prediction = predictor.predict(X)
 				# st.write(prediction)
-
+				st.success("Tweet Categorized as:: {}".format(prediction))
                 #final_result = get_keys(prediction,prediction_labels)
                 #st.success("Tweet Categorized as:: {}".format(final_result))
 			#st.markdown('**Single tweet sentiment**')
