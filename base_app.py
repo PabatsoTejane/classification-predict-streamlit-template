@@ -266,6 +266,8 @@ def main():
 				results.set_index('Tweet_id')
 				st.success(st.dataframe(results))
 
+				st.write( results.loc['846806509732483072'])
+
 				
 # Required to let Streamlit instantiate our web app.  
 if __name__ == '__main__':
