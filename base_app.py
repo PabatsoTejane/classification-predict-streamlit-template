@@ -200,7 +200,7 @@ def main():
 
 	if selection == 'Prediction':
 		st.subheader('Classify your tweets using our machine learning models')
-		data_source = ['Select option', 'Data Frame'] # differentiating between a single text and a dataset input
+		data_source = ['Select option','Single text', 'Data Frame'] # differentiating between a single text and a dataset input
 		source_selection = st.selectbox('What to classify?', data_source)
 
         # Load Our Models
@@ -262,10 +262,39 @@ def main():
 				results = pd.DataFrame(a)
 		
 				results["tweet_id"] = b
-				results.columns = ['Predicted_sentiment', 'Tweet_id'] #ranaming result dataframe columns
+				results.columns = ['Predicted_sentiment', 'Tweet_id'] #renaming result dataframe columns
 				results.set_index('Tweet_id', inplace=True)
 				st.success(st.dataframe(results))
 
+			if source_selection == 'Single text':
+            	### SINGLE TWEET CLASSIFICATION ###
+				st.subheader('Single tweet classification')
+				input_text = st.text_area('Enter Text (max. 140 characters):') ##user entering a single text to classify and predict
+				ml_models = ["Linear SVC","Multinomial NB","K-Neighbours"]
+				model_choice = st.selectbox("Choose ML Model",ml_models)
+				
+				if st.button('Classify'):
+					df = pd.DataFrame(input_text)
+					df
+					df['message'] = df['message'].apply(cleaner)
+					df = lemmatizer(tweets)
+					X = text_input['message']
+
+				if model_choice == 'Linear SVC':
+					predictor = joblib.load(open(os.path.join("models//LinearSVC.pkl"),"rb"))
+					prediction = predictor.predict(X)
+
+				if model_choice == 'Multinomial NB':
+					predictor = load_prediction_models("models//MultinomialNB.pkl")
+					prediction = predictor.predict(X)
+            
+				if model_choice == 'K-Neighbours':
+					predictor = load_prediction_models("models//KNeighbours.pkl")
+					prediction = predictor.predict(X)
+				# st.write(prediction)
+
+                #final_result = get_keys(prediction,prediction_labels)
+                #st.success("Tweet Categorized as:: {}".format(final_result))
 			#st.markdown('**Single tweet sentiment**')
 			#input_text = st.text_area('Enter Tweet ID:') 
 			#if input_text is not None:
