@@ -223,6 +223,7 @@ def main():
 				text_input = pd.read_csv(text_input)
 				
 			uploaded_dataset = st.checkbox('See uploaded dataset')
+			b= text_input['tweetid']
 
 			if uploaded_dataset:
 				st.dataframe(text_input.head(10))
@@ -261,7 +262,7 @@ def main():
 				a = list(map(funt,prediction))
 				results = pd.DataFrame(a)
 		
-				results["tweet_id"] = text_input["tweetid"]
+				results["tweet_id"] = b
 
 				#final_result = get_keys(prediction,prediction_labels)
 				st.success(st.dataframe(results))
