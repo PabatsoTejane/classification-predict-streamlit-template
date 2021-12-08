@@ -262,7 +262,7 @@ def main():
 				results["tweet_id"] = text_input["tweetid"]
 
 				#final_result = get_keys(prediction,prediction_labels)
-				st.success(st.dataframe(results.head(10)))
+				st.success(st.dataframe(results))
 
 				
 # Required to let Streamlit instantiate our web app.  
