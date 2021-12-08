@@ -263,6 +263,7 @@ def main():
 				results = pd.DataFrame(a)
 		
 				results["tweet_id"] = b
+				results.columns = ['Predicted_sentiment', 'Tweet_id']
 
 				#final_result = get_keys(prediction,prediction_labels)
 				st.success(st.dataframe(results))
