@@ -259,6 +259,8 @@ def main():
 				funt = lambda x: prediction_dict[x]
 				a = list(map(funt,prediction))
 				results = pd.DataFrame(a)
+				results["tweet_id"] = text_input["tweetid"]
+
 				#final_result = get_keys(prediction,prediction_labels)
 				st.success(st.dataframe(results.head(10)))
 
