@@ -266,10 +266,10 @@ def main():
 				results.set_index('Tweet_id', inplace=True)
 				st.success(st.dataframe(results))
 
-			st.markdown('**Single tweet sentiment**')
-			input_text = st.text_area('Enter Tweet ID:') 
-			if input_text is not None:
-				st.write(results.loc[input_text])
+			#st.markdown('**Single tweet sentiment**')
+			#input_text = st.text_area('Enter Tweet ID:') 
+			#if input_text is not None:
+				#st.write(results.loc[input_text])
 
 				
 # Required to let Streamlit instantiate our web app.  
