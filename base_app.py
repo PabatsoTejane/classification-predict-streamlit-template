@@ -223,20 +223,20 @@ def main():
 				text_input = pd.read_csv(text_input)
 				
 			uploaded_dataset = st.checkbox('See uploaded dataset')
-			b= text_input['tweetid']
 
 			if uploaded_dataset:
 				st.dataframe(text_input.head(10))
 			
 			ml_models = ["Linear SVC","Multinomial NB","K-Neighbours"]
 			model_choice = st.selectbox("Choose ML Model",ml_models)
+			
 
 			if st.button('Classify'):
 				#st.text("Original test ::\n{}".format(input_text))
 				#text_clean = cleaner(input_text) #passing the text through the 'cleaner' function
 				#lemma = WordNetLemmatizer()
 				#text_lemma = lemma.lemmatize(text_clean)
-
+				b= text_input['tweetid']
 				text_input['message'] = text_input['message'].apply(cleaner)
 				text_input = lemmatizer(tweets)
 
