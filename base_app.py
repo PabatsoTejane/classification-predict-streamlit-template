@@ -224,7 +224,7 @@ def main():
 			uploaded_dataset = st.checkbox('See uploaded dataset')
 
 			if uploaded_dataset:
-				st.dataframe(text_input.head(10))
+				st.dataframe(text_input)
 			
 			ml_models = ["Linear SVC","Multinomial NB","K-Neighbours"]
 			model_choice = st.selectbox("Choose ML Model",ml_models)
