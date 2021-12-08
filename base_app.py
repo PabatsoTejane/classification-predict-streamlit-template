@@ -221,10 +221,11 @@ def main():
 			text_input = st.file_uploader("Choose a CSV file", type="csv")
 			if text_input is not None:
 				text_input = pd.read_csv(text_input)
+				text_input_raw = pd.read_csv(text_input)
 			uploaded_dataset = st.checkbox('See uploaded dataset')
 
 			if uploaded_dataset:
-				st.dataframe(text_input)
+				st.dataframe(text_input.head(10))
 			
 			ml_models = ["Linear SVC","Multinomial NB","K-Neighbours"]
 			model_choice = st.selectbox("Choose ML Model",ml_models)
@@ -259,7 +260,7 @@ def main():
 				funt = lambda x: prediction_dict[x]
 				a = list(map(funt,prediction))
 				results = pd.DataFrame(a)
-				results["tweet_id"] = text_input["tweetid"]
+				results["tweet_id"] = text_input_raw["tweetid"]
 
 				#final_result = get_keys(prediction,prediction_labels)
 				st.success(st.dataframe(results))
