@@ -202,10 +202,11 @@ def main():
 			return loaded_models
 
         # Getting the predictions
-		def get_keys(val,my_dict):
+		def get_keys(array,my_dict):
 			for key,value in my_dict.items():
-				if val.all() == value:
-					return key
+				for val in array:
+					if val == value:
+						return key
 			
 		
 		if source_selection == 'Data Frame':
