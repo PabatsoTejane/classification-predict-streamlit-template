@@ -221,7 +221,7 @@ def main():
 			text_input = st.file_uploader("Choose a CSV file", type="csv")
 			if text_input is not None:
 				text_input = pd.read_csv(text_input)
-				text_input_raw = pd.read_csv(text_input)
+				
 			uploaded_dataset = st.checkbox('See uploaded dataset')
 
 			if uploaded_dataset:
@@ -260,6 +260,7 @@ def main():
 				funt = lambda x: prediction_dict[x]
 				a = list(map(funt,prediction))
 				results = pd.DataFrame(a)
+				text_input_raw = pd.read_csv(text_input)
 				results["tweet_id"] = text_input_raw["tweetid"]
 
 				#final_result = get_keys(prediction,prediction_labels)
