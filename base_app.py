@@ -266,7 +266,9 @@ def main():
 				results.set_index('Tweet_id', inplace=True)
 				st.success(st.dataframe(results))
 
-				st.write(results.loc[846806509732483072])
+				st.markdown('**Single tweet sentiment**')
+				input_text = st.text_area('Enter Tweet ID:') 
+				st.write(results.loc[input_text])
 
 				
 # Required to let Streamlit instantiate our web app.  
