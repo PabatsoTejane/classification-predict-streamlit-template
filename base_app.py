@@ -263,10 +263,10 @@ def main():
 		
 				results["tweet_id"] = b
 				results.columns = ['Predicted_sentiment', 'Tweet_id'] #ranaming result dataframe columns
-				results.set_index('Tweet_id')
+				results.set_index('Tweet_id', inplace=True)
 				st.success(st.dataframe(results))
 
-				st.write( results.loc['846806509732483072'])
+				#st.write(results.loc['846806509732483072'])
 
 				
 # Required to let Streamlit instantiate our web app.  
