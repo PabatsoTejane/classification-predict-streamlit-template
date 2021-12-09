@@ -141,9 +141,9 @@ def main():
 	#Tweet Classifier App with Streamlit 
 	# Creates a main title and subheader on your page -
 	# these are static across all pages
-	st.image('images//DataDot.png')
+	st.image('images//DataDot.PNG')
 	st.title("Climate Change Belief Classifier")
-	st.sidebar.image('images//DataDot.png')
+	st.sidebar.image('images//DataDot.PNG')
 	st.sidebar.subheader('About Data Dot Inc.')
 	st.sidebar.markdown('Data Dot Inc. is a consultancy firm that uses data science processes to solve your everyday marketing problems')
 	st.sidebar.markdown('    ')
@@ -184,8 +184,6 @@ def main():
 		st.markdown("   ")
 		st.markdown("The most popular hashtags")
 		st.image('images//frequent.png')
-		#st.markdown("The graph below shows the boxplot of the number of words per tweet")
-		#st.image('images//boxplot.png', width=1000)
 
 	# Building the "Information" page
 	if selection == " Additional Information":
@@ -226,7 +224,7 @@ def main():
 				st.dataframe(text_input.drop('sentiment', axis=1).head(10))
 
 			st.markdown("   ")
-			st.image("images//matrix.png")
+			st.image("images//matrix.PNG")
 
 			ml_models = ["Linear SVC","Multinomial NB","K-Neighbours"]
 			model_choice = st.selectbox("Choose ML Model",ml_models)
