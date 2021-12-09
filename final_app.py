@@ -218,7 +218,7 @@ def main():
 			
 
 			if st.button('Classify'):
-				b= text_input['tweetid']
+				
 				text_input['message'] = text_input['message'].apply(cleaner)
 				text_input = lemmatizer(tweets)
 
@@ -241,7 +241,7 @@ def main():
 				a = list(map(funt,prediction))
 				results = pd.DataFrame(a)
 		
-				results["tweet_id"] = b
+				results["tweet_id"] = text_input["tweetid"]
 				results.columns = ['Predicted_sentiment', 'Tweet_id'] #renaming result dataframe columns
 				results.set_index('Tweet_id', inplace=True)
 				st.success(st.dataframe(results))
