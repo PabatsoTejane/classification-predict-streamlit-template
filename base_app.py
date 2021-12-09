@@ -28,31 +28,30 @@ import joblib,os
 # Libraries to be used in data cleaning and model
 import nltk
 from nltk.tokenize import word_tokenize
-from nltk import TreebankWordTokenizer, SnowballStemmer
+from nltk import TreebankWordTokenizer
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords, wordnet
 from nltk import pos_tag
 import string
-import urllib
-from nlppreprocess import NLP
-#import en_core_web_sm
+from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.naive_bayes import MultinomialNB
 from sklearn import metrics
 from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import MinMaxScaler
+from sklearn.svm import LinearSVC
+from sklearn.pipeline import Pipeline
+from sklearn.model_selection import GridSearchCV, KFold, cross_val_score
 from sklearn.metrics import roc_auc_score
 from sklearn.metrics import recall_score
 from sklearn.metrics import precision_score
 from sklearn.metrics import f1_score
-from sklearn.ensemble import RandomForestClassifier
 
 import numpy as np # linear algebra
-import matplotlib.pyplot as plt
 import re
-import seaborn as sns
 import warnings
 
 warnings.filterwarnings('ignore')
@@ -61,9 +60,6 @@ warnings.filterwarnings('ignore')
 import pandas as pd
 import numpy as np
 
-# Plotting libraries
-import plotly.express as px
-import plotly.graph_objects as go
 
 # Vectorizer
 news_vectorizer = open("resources//tfidfvect.pkl","rb")
@@ -207,13 +203,6 @@ def main():
 		def load_prediction_models(model_file):
 			loaded_models = joblib.load(open(os.path.join(model_file),"rb"))
 			return loaded_models
-
-        # Getting the predictions
-		def get_keys(my_dict,array):
-			for val in array:
-				if val in my_dict:
-					return my_dict.keys()
-			
 		
 		if source_selection == 'Data Frame':
             ### DATA FRAME TWEET CLASSIFICATION ###
@@ -235,10 +224,6 @@ def main():
 			
 
 			if st.button('Classify'):
-				#st.text("Original test ::\n{}".format(input_text))
-				#text_clean = cleaner(input_text) #passing the text through the 'cleaner' function
-				#lemma = WordNetLemmatizer()
-				#text_lemma = lemma.lemmatize(text_clean)
 				b= text_input['tweetid']
 				text_input['message'] = text_input['message'].apply(cleaner)
 				text_input = lemmatizer(tweets)
