@@ -185,10 +185,16 @@ def main():
 
 	# Building the "Information" page
 	if selection == " Additional Information":
-		st.subheader("General Information")
+		st.subheader("Additional Information")
 		st.markdown(" ")
-		
-		st.subheader("Raw twitter data and labels")
+
+		st.subheader("Model description")
+		st.markdown("* **Linear Support Vector Classifier**:The objective of a Linear SVC (Support Vector Classifier) is to fit to the data you provide, returning a best fit hyperplane that divides, or categorizes, your data. From there, after getting the hyperplane, you can then feed some features to your classifier to see what the predicted class is. ")
+		st.markdown("* **Multinomial Naive Bayers Classifier**: The Multinomial Naive Bayes algorithm is a Bayesian learning approach popular in Natural Language Processing (NLP). The program guesses the tag of a text, such as an email or a newspaper story, using the Bayes theorem. It calculates each tag's likelihood for a given sample and outputs the tag with the greatest chance.")
+		st.markdown("* **K-Neighnours Classifier**: KNN regression is a non-parametric method that, in an intuitive manner, approximates the association between independent variables and the continuous outcome by averaging the observations in the same neighbourhood. ")
+		st.markdown('For more indepth information on these models, vist: https://monkeylearn.com/blog/classification-algorithms/')
+
+		st.subheader("A look into the data")
 		if st.checkbox('Show raw data'): # data is hidden if box is unchecked
 			st.write(raw_tweets[['sentiment', 'message']]) # will write the raw df to the page
 		if st.checkbox('Show cleaned data'): # data is hidden if box is unchecked
