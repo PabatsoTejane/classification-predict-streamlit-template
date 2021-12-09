@@ -106,7 +106,7 @@ pip install -U streamlit numpy pandas scikit-learn
 3. Clone your copy of the API repo, and navigate to its root directory:
 
 ```bash
-git clone https://github.com/{your-account-name}/classification-predict-streamlit-template.git
+git clone https://github.com/PabatsoTejane/classification-predict-streamlit-template.git
 cd classification-predict-streamlit-template/
 ```
 
