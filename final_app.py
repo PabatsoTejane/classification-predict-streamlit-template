@@ -27,6 +27,7 @@ import joblib,os
 
 # Libraries to be used in data cleaning and model
 import nltk
+nltk.download('punkt')
 from nltk.tokenize import word_tokenize
 from nltk import TreebankWordTokenizer
 from nltk.stem import WordNetLemmatizer
