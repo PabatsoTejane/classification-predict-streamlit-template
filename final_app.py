@@ -186,7 +186,6 @@ def main():
 	# Building the "Information" page
 	if selection == " Additional Information":
 		st.subheader("Additional Information")
-		st.markdown(" ")
 
 		st.subheader("Model description")
 		st.markdown("* **Linear Support Vector Classifier**:The objective of a Linear SVC (Support Vector Classifier) is to fit to the data you provide, returning a best fit hyperplane that divides, or categorizes, your data. From there, after getting the hyperplane, you can then feed some features to your classifier to see what the predicted class is. ")
