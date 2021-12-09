@@ -29,6 +29,8 @@ import joblib,os
 import nltk
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
+nltk.download('wordnet')
+
 from nltk.tokenize import word_tokenize
 from nltk import TreebankWordTokenizer
 from nltk.stem import WordNetLemmatizer
