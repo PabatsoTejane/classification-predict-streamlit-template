@@ -213,7 +213,7 @@ def main():
 				st.dataframe(text_input.drop('sentiment', axis=1).head(10))
 
 			st.markdown("   ")
-			st.image("images//matrix.PNG")
+			st.image("images//Matrix.PNG")
 
 			ml_models = ["Linear SVC","Multinomial NB","K-Neighbours"]
 			model_choice = st.selectbox("Choose ML Model",ml_models)
