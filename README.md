@@ -119,7 +119,7 @@ cd classification-predict-streamlit-template/
 5. Start the Streamlit web app on port `5000` of the host
 
 ```bash
-streamlit run --server.port 5000 base_app.py
+streamlit run --server.port 5000 final_app.py
 ```
 
 If this command ran successfully, output similar to the following should be observed on the Host:
