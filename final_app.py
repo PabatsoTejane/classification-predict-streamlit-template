@@ -26,25 +26,7 @@ import streamlit as st
 import joblib,os
 
 # Libraries to be used in data cleaning and model
-import nltk
-# Create NLTK data directory
-NLTK_DATA_DIR = './nltk_data'
-if not os.path.exists(NLTK_DATA_DIR):
-        os.makedirs(NLTK_DATA_DIR)
-
-nltk.data.path.append(NLTK_DATA_DIR)
-
-# Download packages and store in directory above
-nltk.download('punkt', download_dir=NLTK_DATA_DIR)
-nltk.download('averaged_perceptron_tagger', download_dir=NLTK_DATA_DIR)
-
-DOCS_DIR = './docs'
-import io
-
-path = os.path.join(DOCS_DIR, 'doc1.txt')
-
-with io.open(path, encoding='utf-8') as f:
-    text_from_file = ' '.join(f.read().splitlines())
+import ntlk
 
 from nltk.tokenize import word_tokenize
 from nltk import TreebankWordTokenizer
