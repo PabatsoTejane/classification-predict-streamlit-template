@@ -187,8 +187,6 @@ def main():
 		st.subheader("A look into the data")
 		if st.checkbox('Show raw data'): # data is hidden if box is unchecked
 			st.write(raw_tweets[['sentiment', 'message']]) # will write the raw df to the page
-		if st.checkbox('Show cleaned data'): # data is hidden if box is unchecked
-			st.write(tweets[['sentiment', 'message']]) # will write the cleaned df to the page
 
 	if selection == 'Prediction':
 		st.subheader('Classify your tweets using our machine learning models')
