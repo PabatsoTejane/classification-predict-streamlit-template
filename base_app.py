@@ -225,7 +225,7 @@ def main():
 			uploaded_dataset = st.checkbox('See uploaded dataset')
 
 			if uploaded_dataset:
-				st.dataframe(text_input.drop('sentiment').head(10))
+				st.dataframe(text_input.drop('sentiment', axis=1).head(10))
 
 			st.markdown("   ")
 			st.image("images//matrix.png")
