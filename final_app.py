@@ -27,15 +27,31 @@ import joblib,os
 
 # Libraries to be used in data cleaning and model
 import nltk
-nltk.download('punkt')
-nltk.download('averaged_perceptron_tagger')
-nltk.download('wordnet')
+# Create NLTK data directory
+NLTK_DATA_DIR = './nltk_data'
+if not os.path.exists(NLTK_DATA_DIR):
+        os.makedirs(NLTK_DATA_DIR)
+
+nltk.data.path.append(NLTK_DATA_DIR)
+
+# Download packages and store in directory above
+nltk.download('punkt', download_dir=NLTK_DATA_DIR)
+nltk.download('averaged_perceptron_tagger', download_dir=NLTK_DATA_DIR)
+
+DOCS_DIR = './docs'
+import io
+
+path = os.path.join(DOCS_DIR, 'doc1.txt')
+
+with io.open(path, encoding='utf-8') as f:
+    text_from_file = ' '.join(f.read().splitlines())
 
 from nltk.tokenize import word_tokenize
 from nltk import TreebankWordTokenizer
 from nltk.stem import WordNetLemmatizer
-from nltk.corpus import stopwords, wordnet
-from nltk import pos_tag
+from nltk.corpus import stopwords
+from nltk.corpus.reader import wordnet
+from nltk.tag import pos_tag
 import string
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction.text import CountVectorizer
@@ -64,11 +80,6 @@ warnings.filterwarnings('ignore')
 import pandas as pd
 import numpy as np
 
-
-# Vectorizer
-news_vectorizer = open("resources//tfidfvect.pkl","rb")
-tweet_cv = joblib.load(news_vectorizer) # loading your vectorizer from the pkl file
-
 #@st.cache(allow_output_mutation=True)
 def get_data(filename):
 	data = pd.read_csv(filename)
@@ -81,7 +92,6 @@ tweets = get_data("data//train.csv")
 test_data = get_data("data//test_with_no_labels.csv")
 
 #Data pre-processing functions
-
 def cleaner(tweet):
     tweet = tweet.lower()
     
@@ -133,8 +143,6 @@ test_data['message'] = test_data['message'].apply(cleaner)
 
 tweets = lemmatizer(tweets)
 test_data = lemmatizer(test_data)
-
-
 
 # The main function where we will build the actual app
 def main():
@@ -206,7 +214,7 @@ def main():
 		data_source = ['Select option','Data Frame'] # differentiating between a single text and a dataset input
 		source_selection = st.selectbox('What to classify?', data_source)
 
-        # Load Our Models
+        # Loading model pickle files
 		def load_prediction_models(model_file):
 			loaded_models = joblib.load(open(os.path.join(model_file),"rb"))
 			return loaded_models
@@ -248,8 +256,6 @@ def main():
 				if model_choice == 'K-Neighbours':
 					predictor = load_prediction_models("models//KNeighbours.pkl")
 					prediction = predictor.predict(X)
-
-				#st.success("Tweet Categorized as: {}".format(prediction))
 
 				prediction_dict = {-1: 'Anti', 0: 'Neutral',1: 'Pro',2: 'News'}
 				funt = lambda x: prediction_dict[x]
